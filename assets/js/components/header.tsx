@@ -48,26 +48,26 @@ const Header = () => {
           </Link>
 
           <nav className="hidden md:flex items-center space-x-8">
-            <Link 
-              href="/features" 
+            <Link
+              href="/features"
               className="text-gray-600 hover:text-blue-600 transition-colors font-medium"
             >
               Features
             </Link>
-            <Link 
-              href="/how-it-works" 
+            <Link
+              href="/how-it-works"
               className="text-gray-600 hover:text-blue-600 transition-colors font-medium"
             >
               How It Works
             </Link>
-            <Link 
-              href="/community" 
+            <Link
+              href="/community"
               className="text-gray-600 hover:text-blue-600 transition-colors font-medium"
             >
               Community
             </Link>
-            <Link 
-              href="/events" 
+            <Link
+              href="/events"
               className="text-gray-600 hover:text-blue-600 transition-colors font-medium"
             >
               Events
@@ -76,7 +76,7 @@ const Header = () => {
 
           <div className="flex items-center">
             <Link
-              href="/get-started"
+              href="/analyze"
               className="px-6 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition-colors font-medium"
             >
               Get Started Free

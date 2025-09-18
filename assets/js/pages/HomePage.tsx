@@ -19,18 +19,17 @@ const HomePage = () => {
           <div className="space-y-8">
             <div>
               <h1 className="text-5xl font-bold text-gray-900 mb-6">
-                What's Your{" "}
-                <span className="text-blue-600">Finance</span>
+                What's Your <span className="text-blue-600">Finance</span>
                 <br />
                 <span className="text-blue-600">Big 3</span>?
               </h1>
               <p className="text-xl text-gray-600 leading-relaxed mb-8">
                 Track your spending, income, and investment like fitness
-                metrics. Get your financial health score and level up your
-                money habits!
+                metrics. Get your financial health score and level up your money
+                habits!
               </p>
               <Link
-                href="/check-finance-health"
+                href="/analyze"
                 className="inline-block px-8 py-3 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition-colors font-semibold text-lg"
               >
                 Check My Finance Health
@@ -69,51 +68,76 @@ const HomePage = () => {
               <h3 className="text-lg font-semibold text-gray-900 mb-6 text-center">
                 Your Finance Health Report
               </h3>
-              
+
               <div className="space-y-6">
                 <div>
                   <div className="flex justify-between items-center mb-2">
-                    <span className="text-sm font-medium text-gray-700">Spending Health</span>
-                    <span className="text-sm font-semibold text-blue-600">82/100</span>
+                    <span className="text-sm font-medium text-gray-700">
+                      Spending Health
+                    </span>
+                    <span className="text-sm font-semibold text-blue-600">
+                      82/100
+                    </span>
                   </div>
                   <div className="w-full bg-gray-200 rounded-full h-2">
-                    <div className="bg-blue-500 h-2 rounded-full" style={{ width: '82%' }}></div>
+                    <div
+                      className="bg-blue-500 h-2 rounded-full"
+                      style={{ width: "82%" }}
+                    ></div>
                   </div>
                 </div>
 
                 <div>
                   <div className="flex justify-between items-center mb-2">
-                    <span className="text-sm font-medium text-gray-700">Income Growth</span>
-                    <span className="text-sm font-semibold text-green-600">76/100</span>
+                    <span className="text-sm font-medium text-gray-700">
+                      Income Growth
+                    </span>
+                    <span className="text-sm font-semibold text-green-600">
+                      76/100
+                    </span>
                   </div>
                   <div className="w-full bg-gray-200 rounded-full h-2">
-                    <div className="bg-green-500 h-2 rounded-full" style={{ width: '76%' }}></div>
+                    <div
+                      className="bg-green-500 h-2 rounded-full"
+                      style={{ width: "76%" }}
+                    ></div>
                   </div>
                 </div>
 
                 <div>
                   <div className="flex justify-between items-center mb-2">
-                    <span className="text-sm font-medium text-gray-700">Investment Score</span>
-                    <span className="text-sm font-semibold text-purple-600">64/100</span>
+                    <span className="text-sm font-medium text-gray-700">
+                      Investment Score
+                    </span>
+                    <span className="text-sm font-semibold text-purple-600">
+                      64/100
+                    </span>
                   </div>
                   <div className="w-full bg-gray-200 rounded-full h-2">
-                    <div className="bg-purple-500 h-2 rounded-full" style={{ width: '64%' }}></div>
+                    <div
+                      className="bg-purple-500 h-2 rounded-full"
+                      style={{ width: "64%" }}
+                    ></div>
                   </div>
                 </div>
               </div>
 
               <div className="mt-8 text-center">
                 <div className="text-4xl font-bold text-gray-900 mb-2">74</div>
-                <div className="text-sm font-medium text-gray-600">Overall Finance Health Score</div>
-                <div className="text-xs text-green-600 mt-1">+18 points this month</div>
+                <div className="text-sm font-medium text-gray-600">
+                  Overall Finance Health Score
+                </div>
+                <div className="text-xs text-green-600 mt-1">
+                  +18 points this month
+                </div>
               </div>
             </div>
 
             {/* Phone with Money Image */}
             <div className="rounded-2xl overflow-hidden">
-              <img 
-                src="/images/home_img1.jpg" 
-                alt="Financial tracking on mobile device" 
+              <img
+                src="/images/home_img1.jpg"
+                alt="Financial tracking on mobile device"
                 className="w-full h-64 object-cover"
               />
             </div>
@@ -130,8 +154,8 @@ const HomePage = () => {
               <span className="text-blue-600">Financial Fitness</span>
             </h2>
             <p className="text-xl text-gray-600 max-w-3xl mx-auto">
-              Just like a fitness app tracks your body health, FinFit tracks your financial health with
-              comprehensive tools and insights.
+              Just like a fitness app tracks your body health, FinFit tracks
+              your financial health with comprehensive tools and insights.
             </p>
           </div>
 
@@ -146,9 +170,8 @@ const HomePage = () => {
                 Finance Health Report
               </h3>
               <p className="text-gray-600">
-                Get your fitbit-style financial score with
-                detailed analysis of your spending, income,
-                and investment patterns.
+                Get your fitbit-style financial score with detailed analysis of
+                your spending, income, and investment patterns.
               </p>
             </div>
 
@@ -161,9 +184,8 @@ const HomePage = () => {
                 Daily Checklist & Rewards
               </h3>
               <p className="text-gray-600">
-                Complete daily financial tasks and earn
-                points. Build healthy money habits one day at
-                a time.
+                Complete daily financial tasks and earn points. Build healthy
+                money habits one day at a time.
               </p>
             </div>
 
@@ -176,9 +198,8 @@ const HomePage = () => {
                 Goal Tracking with ETA
               </h3>
               <p className="text-gray-600">
-                Set and track financial goals with smart
-                predictions. Know exactly when you'll reach
-                1M, 10M savings and more.
+                Set and track financial goals with smart predictions. Know
+                exactly when you'll reach 1M, 10M savings and more.
               </p>
             </div>
 
@@ -191,9 +212,8 @@ const HomePage = () => {
                 AI Challenges
               </h3>
               <p className="text-gray-600">
-                Fight financial monsters, complete quests,
-                and level up your money skills with fun,
-                engaging challenges.
+                Fight financial monsters, complete quests, and level up your
+                money skills with fun, engaging challenges.
               </p>
             </div>
 
@@ -206,9 +226,8 @@ const HomePage = () => {
                 Event Hub
               </h3>
               <p className="text-gray-600">
-                Access exclusive youth discounts,
-                government benefits, cultural events, and
-                financial opportunities.
+                Access exclusive youth discounts, government benefits, cultural
+                events, and financial opportunities.
               </p>
             </div>
 
@@ -221,9 +240,8 @@ const HomePage = () => {
                 Calendar Integration
               </h3>
               <p className="text-gray-600">
-                Sync with Google Calendar, set financial
-                reminders, and never miss important money
-                milestones.
+                Sync with Google Calendar, set financial reminders, and never
+                miss important money milestones.
               </p>
             </div>
           </div>
@@ -240,9 +258,9 @@ const HomePage = () => {
                 Your Financial Fitness Tracker
               </h2>
               <p className="text-xl text-gray-600 mb-8 leading-relaxed">
-                Monitor your financial health in real-time with our comprehensive
-                dashboard. Track spending patterns, income growth, and
-                investment performance all in one place.
+                Monitor your financial health in real-time with our
+                comprehensive dashboard. Track spending patterns, income growth,
+                and investment performance all in one place.
               </p>
               <div className="space-y-4">
                 <div className="flex items-center space-x-3">
@@ -263,22 +281,33 @@ const HomePage = () => {
             {/* Right Column - Progress Card */}
             <div className="bg-white rounded-2xl shadow-xl p-8">
               <div className="flex justify-between items-center mb-6">
-                <h3 className="text-lg font-semibold text-gray-900">This Month's Progress</h3>
-                <span className="text-sm font-semibold text-green-600">+15%</span>
+                <h3 className="text-lg font-semibold text-gray-900">
+                  This Month's Progress
+                </h3>
+                <span className="text-sm font-semibold text-green-600">
+                  +15%
+                </span>
               </div>
-              
+
               <div className="mb-6">
                 <div className="flex justify-between items-center mb-2">
-                  <span className="text-sm font-medium text-gray-700">Savings Goal</span>
+                  <span className="text-sm font-medium text-gray-700">
+                    Savings Goal
+                  </span>
                   <span className="text-sm text-gray-500">₩3.2M / ₩6M</span>
                 </div>
                 <div className="w-full bg-gray-200 rounded-full h-3">
-                  <div className="bg-green-500 h-3 rounded-full" style={{ width: '53%' }}></div>
+                  <div
+                    className="bg-green-500 h-3 rounded-full"
+                    style={{ width: "53%" }}
+                  ></div>
                 </div>
               </div>
 
               <div className="text-center">
-                <p className="text-xs text-gray-500 mb-2">Expected completion: March 2024</p>
+                <p className="text-xs text-gray-500 mb-2">
+                  Expected completion: March 2024
+                </p>
               </div>
             </div>
           </div>

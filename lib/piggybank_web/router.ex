@@ -23,6 +23,7 @@ defmodule PiggybankWeb.Router do
     get "/how-it-works", PageController, :how_it_works
     get "/community", PageController, :community
     get "/events", PageController, :events
+    get "/analyze", PageController, :analyze
   end
 
   # Other scopes may use custom stacks.

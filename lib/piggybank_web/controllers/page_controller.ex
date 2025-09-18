@@ -30,4 +30,10 @@ defmodule PiggybankWeb.PageController do
     |> assign(:page_title, "이벤트")
     |> render_inertia("EventsPage")
   end
+
+  def analyze(conn, _params) do
+    conn
+    |> assign(:page_title, "분석")
+    |> render_inertia("AnalyzePage")
+  end
 end

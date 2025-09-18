@@ -15,7 +15,7 @@ import {
   ChevronRight,
   ArrowRight,
   Star,
-  CheckCircle
+  CheckCircle,
 } from "lucide-react";
 
 const EventsPage = () => {
@@ -25,11 +25,13 @@ const EventsPage = () => {
       <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
         <div className="text-center mb-16">
           <h1 className="text-5xl font-bold text-gray-900 mb-6">
-            <span className="text-green-600">Events & Benefits</span> for Young Professionals
+            <span className="text-green-600">Events & Benefits</span> for Young
+            Professionals
           </h1>
           <p className="text-xl text-gray-600 max-w-3xl mx-auto">
-            Discover exclusive opportunities, discounts, and events designed specifically for young
-            professionals building their financial future.
+            Discover exclusive opportunities, discounts, and events designed
+            specifically for young professionals building their financial
+            future.
           </p>
         </div>
 
@@ -158,11 +160,15 @@ const EventsPage = () => {
 
           {/* Your Financial Calendar */}
           <div>
-            <h2 className="text-3xl font-bold text-gray-900 mb-8">Your Financial Calendar</h2>
+            <h2 className="text-3xl font-bold text-gray-900 mb-8">
+              Your Financial Calendar
+            </h2>
 
             <div className="bg-white rounded-xl shadow-lg border border-gray-200 p-6">
               <div className="flex justify-between items-center mb-6">
-                <h3 className="text-lg font-semibold text-gray-900">January 2024</h3>
+                <h3 className="text-lg font-semibold text-gray-900">
+                  January 2024
+                </h3>
                 <div className="flex space-x-2">
                   <button className="p-1 hover:bg-gray-100 rounded">
                     <ChevronRight className="w-4 h-4 rotate-180" />
@@ -175,18 +181,25 @@ const EventsPage = () => {
 
               {/* Calendar Grid */}
               <div className="grid grid-cols-7 gap-2 mb-4">
-                {['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'].map((day) => (
-                  <div key={day} className="text-center text-sm font-medium text-gray-500 py-2">
-                    {day}
-                  </div>
-                ))}
+                {["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"].map(
+                  (day) => (
+                    <div
+                      key={day}
+                      className="text-center text-sm font-medium text-gray-500 py-2"
+                    >
+                      {day}
+                    </div>
+                  ),
+                )}
                 {Array.from({ length: 31 }, (_, i) => i + 1).map((date) => (
                   <div
                     key={date}
                     className={`text-center py-2 text-sm cursor-pointer hover:bg-gray-100 rounded ${
-                      date === 15 ? 'bg-blue-100 text-blue-600 font-semibold' :
-                      date === 25 ? 'bg-green-100 text-green-600 font-semibold' :
-                      'text-gray-900'
+                      date === 15
+                        ? "bg-blue-100 text-blue-600 font-semibold"
+                        : date === 25
+                          ? "bg-green-100 text-green-600 font-semibold"
+                          : "text-gray-900"
                     }`}
                   >
                     {date}
@@ -229,9 +242,12 @@ const EventsPage = () => {
               <div className="w-16 h-16 bg-green-100 rounded-xl flex items-center justify-center mb-6">
                 <Gift className="w-8 h-8 text-green-600" />
               </div>
-              <h3 className="text-xl font-bold text-gray-900 mb-4">Youth Discounts</h3>
+              <h3 className="text-xl font-bold text-gray-900 mb-4">
+                Youth Discounts
+              </h3>
               <p className="text-gray-600 mb-6">
-                Access exclusive discounts on dining, entertainment, shopping and cultural events
+                Access exclusive discounts on dining, entertainment, shopping
+                and cultural events
               </p>
               <div className="space-y-2 text-sm text-gray-600">
                 <div className="flex items-center">
@@ -258,9 +274,12 @@ const EventsPage = () => {
               <div className="w-16 h-16 bg-blue-100 rounded-xl flex items-center justify-center mb-6">
                 <Building2 className="w-8 h-8 text-blue-600" />
               </div>
-              <h3 className="text-xl font-bold text-gray-900 mb-4">Government Benefits</h3>
+              <h3 className="text-xl font-bold text-gray-900 mb-4">
+                Government Benefits
+              </h3>
               <p className="text-gray-600 mb-6">
-                Stay updated on government programs and financial support available for young professionals
+                Stay updated on government programs and financial support
+                available for young professionals
               </p>
               <div className="space-y-2 text-sm text-gray-600">
                 <div className="flex items-center">
@@ -287,9 +306,12 @@ const EventsPage = () => {
               <div className="w-16 h-16 bg-purple-100 rounded-xl flex items-center justify-center mb-6">
                 <Calendar className="w-8 h-8 text-purple-600" />
               </div>
-              <h3 className="text-xl font-bold text-gray-900 mb-4">Financial Calendar</h3>
+              <h3 className="text-xl font-bold text-gray-900 mb-4">
+                Financial Calendar
+              </h3>
               <p className="text-gray-600 mb-6">
-                Never miss important financial deadlines with integrated calendar and smart reminders
+                Never miss important financial deadlines with integrated
+                calendar and smart reminders
               </p>
               <div className="space-y-2 text-sm text-gray-600">
                 <div className="flex items-center">
@@ -325,17 +347,27 @@ const EventsPage = () => {
                 <Heart className="w-6 h-6 text-red-600" />
               </div>
               <h3 className="font-bold text-gray-900 mb-2">Dating & Social</h3>
-              <p className="text-gray-600 text-sm mb-3">Special rates for social events and dating apps</p>
-              <div className="text-green-600 font-semibold text-sm">Up to 40% off</div>
+              <p className="text-gray-600 text-sm mb-3">
+                Special rates for social events and dating apps
+              </p>
+              <div className="text-green-600 font-semibold text-sm">
+                Up to 40% off
+              </div>
             </div>
 
             <div className="bg-white rounded-lg p-6 text-center">
               <div className="w-12 h-12 bg-purple-100 rounded-lg flex items-center justify-center mx-auto mb-4">
                 <CreditCard className="w-6 h-6 text-purple-600" />
               </div>
-              <h3 className="font-bold text-gray-900 mb-2">Financial Services</h3>
-              <p className="text-gray-600 text-sm mb-3">Low-interest loans and premium banking</p>
-              <div className="text-green-600 font-semibold text-sm">Special rates</div>
+              <h3 className="font-bold text-gray-900 mb-2">
+                Financial Services
+              </h3>
+              <p className="text-gray-600 text-sm mb-3">
+                Low-interest loans and premium banking
+              </p>
+              <div className="text-green-600 font-semibold text-sm">
+                Special rates
+              </div>
             </div>
 
             <div className="bg-white rounded-lg p-6 text-center">
@@ -343,17 +375,27 @@ const EventsPage = () => {
                 <Home className="w-6 h-6 text-blue-600" />
               </div>
               <h3 className="font-bold text-gray-900 mb-2">Housing</h3>
-              <p className="text-gray-600 text-sm mb-3">First-time buyer programs and rental assistance</p>
-              <div className="text-green-600 font-semibold text-sm">Government support</div>
+              <p className="text-gray-600 text-sm mb-3">
+                First-time buyer programs and rental assistance
+              </p>
+              <div className="text-green-600 font-semibold text-sm">
+                Government support
+              </div>
             </div>
 
             <div className="bg-white rounded-lg p-6 text-center">
               <div className="w-12 h-12 bg-orange-100 rounded-lg flex items-center justify-center mx-auto mb-4">
                 <Briefcase className="w-6 h-6 text-orange-600" />
               </div>
-              <h3 className="font-bold text-gray-900 mb-2">Career Development</h3>
-              <p className="text-gray-600 text-sm mb-3">Professional courses and certifications</p>
-              <div className="text-green-600 font-semibold text-sm">Free access</div>
+              <h3 className="font-bold text-gray-900 mb-2">
+                Career Development
+              </h3>
+              <p className="text-gray-600 text-sm mb-3">
+                Professional courses and certifications
+              </p>
+              <div className="text-green-600 font-semibold text-sm">
+                Free access
+              </div>
             </div>
           </div>
         </div>
@@ -364,11 +406,11 @@ const EventsPage = () => {
             Stay Connected with Opportunities
           </h2>
           <p className="text-xl text-gray-600 mb-8 max-w-2xl mx-auto">
-            Get personalized event recommendations and exclusive access to youth benefits that help you
-            save money while building your career.
+            Get personalized event recommendations and exclusive access to youth
+            benefits that help you save money while building your career.
           </p>
           <Link
-            href="/check-finance-health"
+            href="/analyze"
             className="inline-block px-8 py-4 bg-green-600 text-white rounded-lg hover:bg-green-700 transition-colors font-semibold text-lg"
           >
             Explore Events & Benefits

@@ -7,7 +7,7 @@ import {
   Award,
   ArrowRight,
   CheckCircle,
-  TrendingUp
+  TrendingUp,
 } from "lucide-react";
 
 const HowItWorksPage = () => {
@@ -20,8 +20,8 @@ const HowItWorksPage = () => {
             How <span className="text-blue-600">FinFit</span> Works
           </h1>
           <p className="text-xl text-gray-600 max-w-3xl mx-auto">
-            Getting started with your financial fitness journey is simple. Follow these four easy steps
-            to transform your money habits.
+            Getting started with your financial fitness journey is simple.
+            Follow these four easy steps to transform your money habits.
           </p>
         </div>
 
@@ -41,8 +41,8 @@ const HowItWorksPage = () => {
               Input Financial Data
             </h3>
             <p className="text-gray-600 mb-6">
-              Connect your accounts or manually input your spending,
-              income, and investment information securely.
+              Connect your accounts or manually input your spending, income, and
+              investment information securely.
             </p>
             <ul className="space-y-2 text-sm text-gray-600">
               <li className="flex items-center">
@@ -74,8 +74,8 @@ const HowItWorksPage = () => {
               Get Your Finance Health Score
             </h3>
             <p className="text-gray-600 mb-6">
-              Receive your comprehensive financial health report with scores
-              for spending, income, and investment performance.
+              Receive your comprehensive financial health report with scores for
+              spending, income, and investment performance.
             </p>
             <ul className="space-y-2 text-sm text-gray-600">
               <li className="flex items-center">
@@ -140,8 +140,8 @@ const HowItWorksPage = () => {
               Earn Rewards & Improve
             </h3>
             <p className="text-gray-600 mb-6">
-              Complete challenges, level up your financial habits, and watch your
-              Finance Health score improve over time.
+              Complete challenges, level up your financial habits, and watch
+              your Finance Health score improve over time.
             </p>
             <ul className="space-y-2 text-sm text-gray-600">
               <li className="flex items-center">
@@ -170,8 +170,12 @@ const HowItWorksPage = () => {
               <div className="w-20 h-20 bg-blue-100 rounded-full flex items-center justify-center mx-auto mb-4">
                 <Upload className="w-10 h-10 text-blue-600" />
               </div>
-              <h3 className="font-semibold text-gray-900 mb-2">Connect & Analyze</h3>
-              <p className="text-gray-600 text-sm">Input your financial data securely</p>
+              <h3 className="font-semibold text-gray-900 mb-2">
+                Connect & Analyze
+              </h3>
+              <p className="text-gray-600 text-sm">
+                Input your financial data securely
+              </p>
             </div>
 
             <ArrowRight className="w-8 h-8 text-gray-400 rotate-90 lg:rotate-0" />
@@ -180,8 +184,12 @@ const HowItWorksPage = () => {
               <div className="w-20 h-20 bg-green-100 rounded-full flex items-center justify-center mx-auto mb-4">
                 <BarChart3 className="w-10 h-10 text-green-600" />
               </div>
-              <h3 className="font-semibold text-gray-900 mb-2">Get Your Score</h3>
-              <p className="text-gray-600 text-sm">Receive personalized health report</p>
+              <h3 className="font-semibold text-gray-900 mb-2">
+                Get Your Score
+              </h3>
+              <p className="text-gray-600 text-sm">
+                Receive personalized health report
+              </p>
             </div>
 
             <ArrowRight className="w-8 h-8 text-gray-400 rotate-90 lg:rotate-0" />
@@ -190,8 +198,12 @@ const HowItWorksPage = () => {
               <div className="w-20 h-20 bg-purple-100 rounded-full flex items-center justify-center mx-auto mb-4">
                 <Target className="w-10 h-10 text-purple-600" />
               </div>
-              <h3 className="font-semibold text-gray-900 mb-2">Follow Your Plan</h3>
-              <p className="text-gray-600 text-sm">Complete daily tasks & challenges</p>
+              <h3 className="font-semibold text-gray-900 mb-2">
+                Follow Your Plan
+              </h3>
+              <p className="text-gray-600 text-sm">
+                Complete daily tasks & challenges
+              </p>
             </div>
 
             <ArrowRight className="w-8 h-8 text-gray-400 rotate-90 lg:rotate-0" />
@@ -201,7 +213,9 @@ const HowItWorksPage = () => {
                 <TrendingUp className="w-10 h-10 text-orange-600" />
               </div>
               <h3 className="font-semibold text-gray-900 mb-2">See Results</h3>
-              <p className="text-gray-600 text-sm">Watch your score improve over time</p>
+              <p className="text-gray-600 text-sm">
+                Watch your score improve over time
+              </p>
             </div>
           </div>
         </div>
@@ -209,9 +223,12 @@ const HowItWorksPage = () => {
         {/* Success Stats */}
         <div className="bg-gradient-to-r from-blue-600 to-purple-600 rounded-2xl p-8 text-white mb-16">
           <div className="text-center mb-8">
-            <h2 className="text-3xl font-bold mb-4">Join Our Success Stories</h2>
+            <h2 className="text-3xl font-bold mb-4">
+              Join Our Success Stories
+            </h2>
             <p className="text-xl opacity-90">
-              See how FinFit has transformed financial habits for thousands of users
+              See how FinFit has transformed financial habits for thousands of
+              users
             </p>
           </div>
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
@@ -236,11 +253,11 @@ const HowItWorksPage = () => {
             Ready to Start Your Financial Fitness Journey?
           </h2>
           <p className="text-xl text-gray-600 mb-8">
-            Join thousands of young professionals who are already improving their financial
-            health with FinFit.
+            Join thousands of young professionals who are already improving
+            their financial health with FinFit.
           </p>
           <Link
-            href="/check-finance-health"
+            href="/analyze"
             className="inline-block px-8 py-4 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition-colors font-semibold text-lg"
           >
             Get Your Finance Health Score

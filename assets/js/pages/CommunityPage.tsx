@@ -11,7 +11,7 @@ import {
   Bot,
   Heart,
   CheckCircle,
-  User
+  User,
 } from "lucide-react";
 
 const CommunityPage = () => {
@@ -21,11 +21,12 @@ const CommunityPage = () => {
       <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
         <div className="text-center mb-16">
           <h1 className="text-5xl font-bold text-gray-900 mb-6">
-            <span className="text-blue-600">Young Professionals</span> Improving Together
+            <span className="text-blue-600">Young Professionals</span> Improving
+            Together
           </h1>
           <p className="text-xl text-gray-600 max-w-3xl mx-auto">
-            Join a supportive community of ambitious young professionals who are transforming
-            their financial futures with FinFit.
+            Join a supportive community of ambitious young professionals who are
+            transforming their financial futures with FinFit.
           </p>
         </div>
 
@@ -75,16 +76,23 @@ const CommunityPage = () => {
                 </div>
                 <div>
                   <div className="font-semibold text-gray-900">김민수</div>
-                  <div className="text-gray-600 text-sm">Marketing Specialist, 26</div>
+                  <div className="text-gray-600 text-sm">
+                    Marketing Specialist, 26
+                  </div>
                 </div>
               </div>
               <div className="flex mb-4">
                 {[...Array(5)].map((_, i) => (
-                  <Star key={i} className="w-4 h-4 text-yellow-400 fill-current" />
+                  <Star
+                    key={i}
+                    className="w-4 h-4 text-yellow-400 fill-current"
+                  />
                 ))}
               </div>
               <p className="text-gray-600 mb-4">
-                "FinFit helped me save ₩6M in just 8 months! The gamification makes budgeting actually fun. I love competing with friends on savings challenges."
+                "FinFit helped me save ₩6M in just 8 months! The gamification
+                makes budgeting actually fun. I love competing with friends on
+                savings challenges."
               </p>
               <div className="text-blue-600 text-sm font-medium">₩6M saved</div>
             </div>
@@ -97,18 +105,27 @@ const CommunityPage = () => {
                 </div>
                 <div>
                   <div className="font-semibold text-gray-900">박지은</div>
-                  <div className="text-gray-600 text-sm">Software Developer, 28</div>
+                  <div className="text-gray-600 text-sm">
+                    Software Developer, 28
+                  </div>
                 </div>
               </div>
               <div className="flex mb-4">
                 {[...Array(5)].map((_, i) => (
-                  <Star key={i} className="w-4 h-4 text-yellow-400 fill-current" />
+                  <Star
+                    key={i}
+                    className="w-4 h-4 text-yellow-400 fill-current"
+                  />
                 ))}
               </div>
               <p className="text-gray-600 mb-4">
-                "The Finance Big 3 concept is genius. I finally understand where my money goes and how to optimize it. My investment score went from 45 to 82!"
+                "The Finance Big 3 concept is genius. I finally understand where
+                my money goes and how to optimize it. My investment score went
+                from 45 to 82!"
               </p>
-              <div className="text-green-600 text-sm font-medium">+37 points</div>
+              <div className="text-green-600 text-sm font-medium">
+                +37 points
+              </div>
             </div>
 
             {/* Testimonial 3 */}
@@ -124,13 +141,20 @@ const CommunityPage = () => {
               </div>
               <div className="flex mb-4">
                 {[...Array(5)].map((_, i) => (
-                  <Star key={i} className="w-4 h-4 text-yellow-400 fill-current" />
+                  <Star
+                    key={i}
+                    className="w-4 h-4 text-yellow-400 fill-current"
+                  />
                 ))}
               </div>
               <p className="text-gray-600 mb-4">
-                "As a freelancer, tracking irregular income was always hard. FinFit's smart analytics help me plan for lean months and celebrate good ones!"
+                "As a freelancer, tracking irregular income was always hard.
+                FinFit's smart analytics help me plan for lean months and
+                celebrate good ones!"
               </p>
-              <div className="text-purple-600 text-sm font-medium">Better planning</div>
+              <div className="text-purple-600 text-sm font-medium">
+                Better planning
+              </div>
             </div>
           </div>
         </div>
@@ -150,8 +174,8 @@ const CommunityPage = () => {
                 Peer Learning Groups
               </h3>
               <p className="text-gray-600 mb-6">
-                Join study groups focused on specific financial goals like home buying,
-                investing, or debt elimination.
+                Join study groups focused on specific financial goals like home
+                buying, investing, or debt elimination.
               </p>
               <ul className="space-y-2 text-gray-600 text-sm">
                 <li className="flex items-center">
@@ -178,8 +202,8 @@ const CommunityPage = () => {
                 Progress Sharing
               </h3>
               <p className="text-gray-600 mb-6">
-                Celebrate milestones and motivate each other with anonymous progress
-                updates and success stories.
+                Celebrate milestones and motivate each other with anonymous
+                progress updates and success stories.
               </p>
               <ul className="space-y-2 text-gray-600 text-sm">
                 <li className="flex items-center">
@@ -235,24 +259,36 @@ const CommunityPage = () => {
                 Level Up Together
               </h2>
               <p className="text-xl text-gray-600 mb-8">
-                Transform financial management into an exciting adventure. Complete quests, defeat
-                spending monsters, and unlock rewards as you build better money habits.
+                Transform financial management into an exciting adventure.
+                Complete quests, defeat spending monsters, and unlock rewards as
+                you build better money habits.
               </p>
 
               {/* Progress Card */}
               <div className="bg-yellow-50 border border-yellow-200 rounded-xl p-6 mb-6">
                 <div className="flex items-center justify-between mb-4">
-                  <h3 className="font-semibold text-gray-900">👑 Your Quest Progress</h3>
-                  <span className="text-sm font-medium text-orange-600">2,340 XP</span>
+                  <h3 className="font-semibold text-gray-900">
+                    👑 Your Quest Progress
+                  </h3>
+                  <span className="text-sm font-medium text-orange-600">
+                    2,340 XP
+                  </span>
                 </div>
                 <div className="mb-4">
                   <div className="flex justify-between items-center mb-2">
-                    <span className="text-sm font-medium text-gray-700">Level 12 Financial Warrior</span>
+                    <span className="text-sm font-medium text-gray-700">
+                      Level 12 Financial Warrior
+                    </span>
                   </div>
                   <div className="w-full bg-gray-200 rounded-full h-2">
-                    <div className="bg-orange-500 h-2 rounded-full" style={{ width: '65%' }}></div>
+                    <div
+                      className="bg-orange-500 h-2 rounded-full"
+                      style={{ width: "65%" }}
+                    ></div>
                   </div>
-                  <p className="text-xs text-gray-500 mt-1">660 XP until Level 13</p>
+                  <p className="text-xs text-gray-500 mt-1">
+                    660 XP until Level 13
+                  </p>
                 </div>
               </div>
 
@@ -263,11 +299,15 @@ const CommunityPage = () => {
                 </div>
                 <div className="flex items-center">
                   <Target className="w-6 h-6 text-blue-500 mr-3" />
-                  <span className="text-gray-700">Boss battles against spending monsters</span>
+                  <span className="text-gray-700">
+                    Boss battles against spending monsters
+                  </span>
                 </div>
                 <div className="flex items-center">
                   <Star className="w-6 h-6 text-purple-500 mr-3" />
-                  <span className="text-gray-700">Achievement system with exclusive rewards</span>
+                  <span className="text-gray-700">
+                    Achievement system with exclusive rewards
+                  </span>
                 </div>
               </div>
             </div>
@@ -276,11 +316,17 @@ const CommunityPage = () => {
             <div className="space-y-6">
               <div className="bg-gradient-to-r from-purple-500 to-pink-500 rounded-xl p-1">
                 <div className="bg-white rounded-lg p-6">
-                  <h3 className="font-semibold text-gray-900 mb-4">🏆 Earned Rewards</h3>
+                  <h3 className="font-semibold text-gray-900 mb-4">
+                    🏆 Earned Rewards
+                  </h3>
                   <div className="grid grid-cols-2 gap-4">
                     <div className="text-center">
-                      <div className="text-2xl font-bold text-gray-900">₩15,000</div>
-                      <div className="text-sm text-gray-600">Cashback Earned</div>
+                      <div className="text-2xl font-bold text-gray-900">
+                        ₩15,000
+                      </div>
+                      <div className="text-sm text-gray-600">
+                        Cashback Earned
+                      </div>
                     </div>
                     <div className="text-center">
                       <div className="text-2xl font-bold text-gray-900">12</div>
@@ -292,19 +338,29 @@ const CommunityPage = () => {
 
               {/* Active Quests */}
               <div className="bg-green-50 border border-green-200 rounded-xl p-6">
-                <h3 className="font-semibold text-gray-900 mb-4">⚡ Active Quests</h3>
+                <h3 className="font-semibold text-gray-900 mb-4">
+                  ⚡ Active Quests
+                </h3>
                 <div className="space-y-3">
                   <div className="flex items-center justify-between">
-                    <span className="text-sm text-gray-700">완벽한 예산 정리 도전</span>
+                    <span className="text-sm text-gray-700">
+                      완벽한 예산 정리 도전
+                    </span>
                     <span className="text-sm text-green-600">75%</span>
                   </div>
                   <div className="flex items-center justify-between">
-                    <span className="text-sm text-gray-700">⚔️ Complete Daily Checklist 7 Days</span>
+                    <span className="text-sm text-gray-700">
+                      ⚔️ Complete Daily Checklist 7 Days
+                    </span>
                     <span className="text-sm text-blue-600">5/7</span>
                   </div>
                   <div className="flex items-center justify-between">
-                    <span className="text-sm text-gray-700">⭐ Defeat the Impulse Buy Monster</span>
-                    <span className="text-sm text-purple-600 bg-purple-100 px-2 py-1 rounded text-xs">New!</span>
+                    <span className="text-sm text-gray-700">
+                      ⭐ Defeat the Impulse Buy Monster
+                    </span>
+                    <span className="text-sm text-purple-600 bg-purple-100 px-2 py-1 rounded text-xs">
+                      New!
+                    </span>
                   </div>
                 </div>
               </div>
@@ -319,7 +375,8 @@ const CommunityPage = () => {
               Meet Your AI Financial Coach
             </h2>
             <p className="text-xl text-gray-600 max-w-2xl mx-auto">
-              Get 24/7 personalized guidance and instant answers to your financial questions.
+              Get 24/7 personalized guidance and instant answers to your
+              financial questions.
             </p>
           </div>
 
@@ -332,7 +389,8 @@ const CommunityPage = () => {
                 </div>
                 <div className="bg-blue-50 rounded-lg p-3 flex-1">
                   <p className="text-gray-800">
-                    Hi! I noticed you've been spending more on dining out lately. Would you like some tips to optimize this category?
+                    Hi! I noticed you've been spending more on dining out
+                    lately. Would you like some tips to optimize this category?
                   </p>
                 </div>
               </div>
@@ -354,7 +412,9 @@ const CommunityPage = () => {
                 </div>
                 <div className="bg-blue-50 rounded-lg p-3 flex-1">
                   <p className="text-gray-800">
-                    Great! I've created a personalized dining budget that can save you ₩200k monthly while still enjoying your favorite restaurants...
+                    Great! I've created a personalized dining budget that can
+                    save you ₩200k monthly while still enjoying your favorite
+                    restaurants...
                   </p>
                 </div>
               </div>
@@ -368,11 +428,11 @@ const CommunityPage = () => {
             Ready to Join Our Community?
           </h2>
           <p className="text-xl mb-8 opacity-90">
-            Start your financial fitness journey with thousands of young professionals who are already
-            achieving their money goals.
+            Start your financial fitness journey with thousands of young
+            professionals who are already achieving their money goals.
           </p>
           <Link
-            href="/check-finance-health"
+            href="/analyze"
             className="inline-block px-8 py-4 bg-white text-blue-600 rounded-lg hover:bg-gray-100 transition-colors font-semibold text-lg"
           >
             Join FinFit Community

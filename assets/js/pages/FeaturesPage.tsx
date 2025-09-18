@@ -12,7 +12,7 @@ import {
   Users,
   Zap,
   Brain,
-  Heart
+  Heart,
 } from "lucide-react";
 
 const FeaturesPage = () => {
@@ -25,8 +25,9 @@ const FeaturesPage = () => {
             All the <span className="text-blue-600">Features</span> You Need
           </h1>
           <p className="text-xl text-gray-600 max-w-3xl mx-auto">
-            FinFit combines the best of fitness tracking with financial management,
-            making money management as engaging and rewarding as your daily workout.
+            FinFit combines the best of fitness tracking with financial
+            management, making money management as engaging and rewarding as
+            your daily workout.
           </p>
         </div>
 
@@ -41,8 +42,9 @@ const FeaturesPage = () => {
               Finance Health Report
             </h3>
             <p className="text-gray-600 mb-6">
-              Get your comprehensive financial health score with detailed analysis
-              of spending patterns, income trends, and investment performance.
+              Get your comprehensive financial health score with detailed
+              analysis of spending patterns, income trends, and investment
+              performance.
             </p>
             <ul className="space-y-2 text-gray-600">
               <li className="flex items-center">
@@ -149,12 +151,10 @@ const FeaturesPage = () => {
             <div className="w-16 h-16 bg-pink-100 rounded-xl flex items-center justify-center mb-6">
               <TrendingUp className="w-8 h-8 text-pink-600" />
             </div>
-            <h3 className="text-2xl font-bold text-gray-900 mb-4">
-              Event Hub
-            </h3>
+            <h3 className="text-2xl font-bold text-gray-900 mb-4">Event Hub</h3>
             <p className="text-gray-600 mb-6">
-              Access exclusive youth discounts, government benefits, cultural events,
-              and financial opportunities all in one place.
+              Access exclusive youth discounts, government benefits, cultural
+              events, and financial opportunities all in one place.
             </p>
             <ul className="space-y-2 text-gray-600">
               <li className="flex items-center">
@@ -252,10 +252,11 @@ const FeaturesPage = () => {
             Ready to Transform Your Financial Habits?
           </h2>
           <p className="text-xl mb-8 opacity-90">
-            Join thousands of young professionals who are already leveling up their money game.
+            Join thousands of young professionals who are already leveling up
+            their money game.
           </p>
           <Link
-            href="/check-finance-health"
+            href="/analyze"
             className="inline-block px-8 py-3 bg-white text-blue-600 rounded-lg hover:bg-gray-100 transition-colors font-semibold text-lg"
           >
             Get Started for Free
