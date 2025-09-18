@@ -40,6 +40,44 @@ const Step2FinancialData: React.FC<Step2FinancialDataProps> = ({
   const categoryOptions = ["Essential", "Non-essential"];
   const frequencyOptions = ["Recurring", "One-time"];
 
+  const isFormValid = () => {
+    const allItems = [
+      ...financialData.income,
+      ...financialData.spending,
+      ...financialData.investment
+    ];
+
+    return allItems.every(item => {
+      if (!item.editable) return true;
+      return item.category !== "" && item.frequency !== "";
+    });
+  };
+
+  const handleSubmit = async () => {
+    if (!isFormValid()) return;
+
+    try {
+      const response = await fetch('/analyze/step2', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+          'X-CSRF-Token': document.querySelector('meta[name="csrf-token"]')?.getAttribute('content') || '',
+        },
+        body: JSON.stringify({
+          financial_data: financialData
+        }),
+      });
+
+      if (response.ok) {
+        window.location.href = '/analyze/step/3';
+      } else {
+        console.error('Failed to submit step 2');
+      }
+    } catch (error) {
+      console.error('Error submitting step 2:', error);
+    }
+  };
+
   const renderIcon = (iconType?: string) => {
     switch (iconType) {
       case "chart":
@@ -144,6 +182,7 @@ const Step2FinancialData: React.FC<Step2FinancialDataProps> = ({
                             backgroundColor: item.editable ? '#ffffff' : '#f9fafb'
                           }}
                         >
+                          <option value="" disabled>카테고리를 선택하세요</option>
                           {categoryOptions.map(option => (
                             <option key={option} value={option}>{option}</option>
                           ))}
@@ -171,6 +210,7 @@ const Step2FinancialData: React.FC<Step2FinancialDataProps> = ({
                             backgroundColor: item.editable ? '#ffffff' : '#f9fafb'
                           }}
                         >
+                          <option value="" disabled>빈도를 선택하세요</option>
                           {frequencyOptions.map(option => (
                             <option key={option} value={option}>{option}</option>
                           ))}
@@ -179,7 +219,7 @@ const Step2FinancialData: React.FC<Step2FinancialDataProps> = ({
                       </div>
                     </div>
                   </div>
-                  <p className="text-xs text-gray-400 mt-2 italic">* Auto-filled based on category (editable)</p>
+                  {!item.editable && <p className="text-xs text-gray-400 mt-2 italic">* Auto-filled based on category (editable)</p>}
                 </div>
               ))}
             </div>
@@ -221,6 +261,7 @@ const Step2FinancialData: React.FC<Step2FinancialDataProps> = ({
                             backgroundColor: item.editable ? '#ffffff' : '#f9fafb'
                           }}
                         >
+                          <option value="" disabled>카테고리를 선택하세요</option>
                           {categoryOptions.map(option => (
                             <option key={option} value={option}>{option}</option>
                           ))}
@@ -248,6 +289,7 @@ const Step2FinancialData: React.FC<Step2FinancialDataProps> = ({
                             backgroundColor: item.editable ? '#ffffff' : '#f9fafb'
                           }}
                         >
+                          <option value="" disabled>빈도를 선택하세요</option>
                           {frequencyOptions.map(option => (
                             <option key={option} value={option}>{option}</option>
                           ))}
@@ -256,7 +298,7 @@ const Step2FinancialData: React.FC<Step2FinancialDataProps> = ({
                       </div>
                     </div>
                   </div>
-                  <p className="text-xs text-gray-400 mt-2 italic">* Auto-filled based on category (editable)</p>
+                  {!item.editable && <p className="text-xs text-gray-400 mt-2 italic">* Auto-filled based on category (editable)</p>}
                 </div>
               ))}
             </div>
@@ -303,6 +345,7 @@ const Step2FinancialData: React.FC<Step2FinancialDataProps> = ({
                             backgroundColor: item.editable ? '#ffffff' : '#f9fafb'
                           }}
                         >
+                          <option value="" disabled>카테고리를 선택하세요</option>
                           {categoryOptions.map(option => (
                             <option key={option} value={option}>{option}</option>
                           ))}
@@ -330,6 +373,7 @@ const Step2FinancialData: React.FC<Step2FinancialDataProps> = ({
                             backgroundColor: item.editable ? '#ffffff' : '#f9fafb'
                           }}
                         >
+                          <option value="" disabled>빈도를 선택하세요</option>
                           {frequencyOptions.map(option => (
                             <option key={option} value={option}>{option}</option>
                           ))}
@@ -338,7 +382,7 @@ const Step2FinancialData: React.FC<Step2FinancialDataProps> = ({
                       </div>
                     </div>
                   </div>
-                  <p className="text-xs text-gray-400 mt-2 italic">* Auto-filled based on category (editable)</p>
+                  {!item.editable && <p className="text-xs text-gray-400 mt-2 italic">* Auto-filled based on category (editable)</p>}
                 </div>
               ))}
             </div>
@@ -357,8 +401,13 @@ const Step2FinancialData: React.FC<Step2FinancialDataProps> = ({
             </p>
           </div>
           <button
-            onClick={onSubmit}
-            className="bg-white text-blue-600 px-8 py-3 rounded-lg font-medium hover:bg-gray-50 transition-colors"
+            onClick={handleSubmit}
+            disabled={!isFormValid()}
+            className={`px-8 py-3 rounded-lg font-medium transition-colors ${
+              isFormValid()
+                ? "bg-white text-blue-600 hover:bg-gray-50"
+                : "bg-gray-300 text-gray-500 cursor-not-allowed"
+            }`}
           >
             Submit Analysis →
           </button>

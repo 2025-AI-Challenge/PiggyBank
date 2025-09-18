@@ -1,4 +1,5 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
+import { router } from "@inertiajs/react";
 import Step1PersonalInfo from "../components/Step1PersonalInfo";
 import Step2FinancialData from "../components/Step2FinancialData";
 import Step3Results from "../components/Step3Results";
@@ -13,80 +14,56 @@ interface FinancialItem {
   icon?: string;
 }
 
-const AnalyzePage = () => {
-  const [currentStep, setCurrentStep] = useState(1);
+interface AnalyzePageProps {
+  step?: string;
+  personal_info?: any;
+  financial_data?: any;
+  analysis_result?: any;
+}
+
+const AnalyzePage = ({ step, personal_info, financial_data, analysis_result }: AnalyzePageProps) => {
+  const initialStep = step ? parseInt(step, 10) : 1;
+  const [currentStep, setCurrentStep] = useState(initialStep);
+
+  // 데이터 유효성 검사 및 리다이렉트
+  useEffect(() => {
+    if (currentStep === 2) {
+      // Step 2에서는 personal_info와 financial_data가 필요
+      if (!personal_info || !financial_data || Object.keys(financial_data).length === 0) {
+        router.visit('/');
+        return;
+      }
+    } else if (currentStep === 3) {
+      // Step 3에서는 analysis_result가 필요
+      if (!analysis_result || Object.keys(analysis_result).length === 0) {
+        router.visit('/');
+        return;
+      }
+    }
+  }, [currentStep, personal_info, financial_data, analysis_result]);
   const [formData, setFormData] = useState({
-    fullName: "",
-    gender: "",
-    age: "",
-    companyName: "",
+    fullName: personal_info?.fullName || "",
+    gender: personal_info?.gender || "",
+    age: personal_info?.age || "",
+    companyName: personal_info?.companyName || "",
   });
 
-  const [financialData, setFinancialData] = useState({
-    income: [
-      {
-        id: 1,
-        name: "Monthly Salary",
-        amount: "2,500,000 KRW",
-        category: "Essential",
-        frequency: "Recurring",
-        editable: false,
-      },
-    ] as FinancialItem[],
-    spending: [
-      {
-        id: 1,
-        name: "Telecom",
-        amount: "100,000 KRW",
-        category: "Essential",
-        frequency: "Recurring",
-        editable: false,
-      },
-      {
-        id: 2,
-        name: "Food",
-        amount: "500,000 KRW",
-        category: "Essential",
-        frequency: "Recurring",
-        editable: false,
-      },
-      {
-        id: 3,
-        name: "Transport",
-        amount: "100,000 KRW",
-        category: "Essential",
-        frequency: "Recurring",
-        editable: false,
-      },
-      {
-        id: 4,
-        name: "Transfer",
-        amount: "200,000 KRW",
-        category: "Essential",
-        frequency: "Recurring",
-        editable: true,
-      },
-    ] as FinancialItem[],
-    investment: [
-      {
-        id: 1,
-        name: "Fund",
-        amount: "100,000 KRW",
-        category: "Essential",
-        frequency: "Recurring",
-        editable: true,
-        icon: "chart",
-      },
-      {
-        id: 2,
-        name: "Housing Subscription",
-        amount: "20,000 KRW",
-        category: "Non-essential",
-        frequency: "One-time",
-        editable: true,
-        icon: "home",
-      },
-    ] as FinancialItem[],
+  const [financialData, setFinancialData] = useState(() => {
+    // 서버에서 받은 financial_data가 있으면 사용
+    if (financial_data && Object.keys(financial_data).length > 0) {
+      return {
+        income: financial_data.income || [],
+        spending: financial_data.spending || [],
+        investment: financial_data.investment || []
+      };
+    }
+
+    // 기본값 없음 - 빈 상태
+    return {
+      income: [] as FinancialItem[],
+      spending: [] as FinancialItem[],
+      investment: [] as FinancialItem[]
+    };
   });
 
   const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -145,7 +122,7 @@ const AnalyzePage = () => {
   }
 
   if (currentStep === 3) {
-    return <Step3Results formData={formData} />;
+    return <Step3Results formData={formData} analysisResult={analysis_result} />;
   }
 
   return null;

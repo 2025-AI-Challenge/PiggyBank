@@ -1,5 +1,5 @@
-import React from "react";
-import { Shield } from "lucide-react";
+import React, { useState } from "react";
+import { Shield, Loader2 } from "lucide-react";
 
 interface FormData {
   fullName: string;
@@ -21,6 +21,35 @@ const Step1PersonalInfo: React.FC<Step1PersonalInfoProps> = ({
   onGenderChange,
   onSubmit,
 }) => {
+  const [isLoading, setIsLoading] = useState(false);
+
+  const handleSubmit = async (e: React.FormEvent) => {
+    e.preventDefault();
+    setIsLoading(true);
+
+    try {
+      const response = await fetch('/analyze/step1', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+          'X-CSRF-Token': document.querySelector('meta[name="csrf-token"]')?.getAttribute('content') || '',
+        },
+        body: JSON.stringify({
+          personal_info: formData
+        }),
+      });
+
+      if (response.ok) {
+        window.location.href = '/analyze/step/2';
+      } else {
+        console.error('Failed to submit step 1');
+        setIsLoading(false);
+      }
+    } catch (error) {
+      console.error('Error submitting step 1:', error);
+      setIsLoading(false);
+    }
+  };
   return (
     <div className="min-h-screen bg-gray-50 flex items-center justify-center py-12 px-4">
       <div className="max-w-md w-full">
@@ -47,7 +76,7 @@ const Step1PersonalInfo: React.FC<Step1PersonalInfoProps> = ({
             </p>
           </div>
 
-          <form onSubmit={onSubmit} className="space-y-6">
+          <form onSubmit={handleSubmit} className="space-y-6">
             {/* Full Name */}
             <div>
               <label className="block text-sm font-medium text-gray-700 mb-2">
@@ -141,9 +170,21 @@ const Step1PersonalInfo: React.FC<Step1PersonalInfoProps> = ({
             {/* Submit Button */}
             <button
               type="submit"
-              className="w-full bg-gradient-to-r from-blue-500 to-purple-600 text-white py-3 px-4 rounded-lg font-medium hover:from-blue-600 hover:to-purple-700 transition-all duration-200"
+              disabled={isLoading}
+              className={`w-full py-3 px-4 rounded-lg font-medium transition-all duration-200 flex items-center justify-center ${
+                isLoading
+                  ? "bg-gray-400 cursor-not-allowed"
+                  : "bg-gradient-to-r from-blue-500 to-purple-600 text-white hover:from-blue-600 hover:to-purple-700"
+              }`}
             >
-              Analyze My Profile
+              {isLoading ? (
+                <>
+                  <Loader2 className="animate-spin w-5 h-5 mr-2" />
+                  Analyzing...
+                </>
+              ) : (
+                "Analyze My Profile"
+              )}
             </button>
 
             {/* Privacy Notice */}

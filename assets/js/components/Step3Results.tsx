@@ -12,9 +12,10 @@ interface FormData {
 
 interface Step3ResultsProps {
   formData: FormData;
+  analysisResult?: any;
 }
 
-const Step3Results: React.FC<Step3ResultsProps> = ({ formData }) => {
+const Step3Results: React.FC<Step3ResultsProps> = ({ formData, analysisResult }) => {
   return (
     <div className="min-h-screen bg-gray-50 py-8 px-4">
       <div className="max-w-4xl mx-auto">
@@ -135,40 +136,50 @@ const Step3Results: React.FC<Step3ResultsProps> = ({ formData }) => {
           <h3 className="text-lg font-semibold text-gray-900 mb-4">Personalized Recommendations</h3>
           <p className="text-sm text-gray-600 mb-6">Based on your analysis, here are key areas to focus on</p>
 
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
-            <div className="bg-blue-50 rounded-lg p-4">
-              <div className="w-10 h-10 bg-blue-600 rounded-lg flex items-center justify-center mb-3">
-                <DollarSign className="w-5 h-5 text-white" />
-              </div>
-              <h4 className="font-semibold text-gray-900 mb-2">Reduce Fixed Costs</h4>
-              <p className="text-sm text-gray-600 mb-3">You could save ₩200,000/month by optimizing fixed subscriptions and recurring payments.</p>
-              <div className="text-xs">
-                <span className="text-blue-600 font-medium">Potential savings: ₩200,000/month</span>
-              </div>
+          {analysisResult?.recommendations ? (
+            <div className="space-y-4">
+              {analysisResult.recommendations.map((recommendation: string, index: number) => (
+                <div key={index} className="bg-blue-50 rounded-lg p-4">
+                  <p className="text-sm text-gray-700">{recommendation}</p>
+                </div>
+              ))}
             </div>
+          ) : (
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
+              <div className="bg-blue-50 rounded-lg p-4">
+                <div className="w-10 h-10 bg-blue-600 rounded-lg flex items-center justify-center mb-3">
+                  <DollarSign className="w-5 h-5 text-white" />
+                </div>
+                <h4 className="font-semibold text-gray-900 mb-2">Reduce Fixed Costs</h4>
+                <p className="text-sm text-gray-600 mb-3">You could save ₩200,000/month by optimizing fixed subscriptions and recurring payments.</p>
+                <div className="text-xs">
+                  <span className="text-blue-600 font-medium">Potential savings: ₩200,000/month</span>
+                </div>
+              </div>
 
-            <div className="bg-green-50 rounded-lg p-4">
-              <div className="w-10 h-10 bg-green-600 rounded-lg flex items-center justify-center mb-3">
-                <CreditCard className="w-5 h-5 text-white" />
+              <div className="bg-green-50 rounded-lg p-4">
+                <div className="w-10 h-10 bg-green-600 rounded-lg flex items-center justify-center mb-3">
+                  <CreditCard className="w-5 h-5 text-white" />
+                </div>
+                <h4 className="font-semibold text-gray-900 mb-2">Optimize Card Benefits</h4>
+                <p className="text-sm text-gray-600 mb-3">Optimizing credit card benefits and cashback programs may improve your score by 12 points.</p>
+                <div className="text-xs">
+                  <span className="text-green-600 font-medium">Score improvement: +12 points</span>
+                </div>
               </div>
-              <h4 className="font-semibold text-gray-900 mb-2">Optimize Card Benefits</h4>
-              <p className="text-sm text-gray-600 mb-3">Optimizing credit card benefits and cashback programs may improve your score by 12 points.</p>
-              <div className="text-xs">
-                <span className="text-green-600 font-medium">Score improvement: +12 points</span>
-              </div>
-            </div>
 
-            <div className="bg-purple-50 rounded-lg p-4">
-              <div className="w-10 h-10 bg-purple-600 rounded-lg flex items-center justify-center mb-3">
-                <TrendingUp className="w-5 h-5 text-white" />
-              </div>
-              <h4 className="font-semibold text-gray-900 mb-2">Start Auto-Investing</h4>
-              <p className="text-sm text-gray-600 mb-3">Setting up automated monthly investments can boost your long-term wealth by 35%.</p>
-              <div className="text-xs">
-                <span className="text-purple-600 font-medium">Long-term growth: +35%</span>
+              <div className="bg-purple-50 rounded-lg p-4">
+                <div className="w-10 h-10 bg-purple-600 rounded-lg flex items-center justify-center mb-3">
+                  <TrendingUp className="w-5 h-5 text-white" />
+                </div>
+                <h4 className="font-semibold text-gray-900 mb-2">Start Auto-Investing</h4>
+                <p className="text-sm text-gray-600 mb-3">Setting up automated monthly investments can boost your long-term wealth by 35%.</p>
+                <div className="text-xs">
+                  <span className="text-purple-600 font-medium">Long-term growth: +35%</span>
+                </div>
               </div>
             </div>
-          </div>
+          )}
         </div>
 
         {/* Action Button */}
