@@ -18,10 +18,10 @@ interface AnalyzePageProps {
   step?: string;
   personal_info?: any;
   financial_data?: any;
-  analysis_result?: any;
+  financial_analysis_result?: any;
 }
 
-const AnalyzePage = ({ step, personal_info, financial_data, analysis_result }: AnalyzePageProps) => {
+const AnalyzePage = ({ step, personal_info, financial_data, financial_analysis_result }: AnalyzePageProps) => {
   const initialStep = step ? parseInt(step, 10) : 1;
   const [currentStep, setCurrentStep] = useState(initialStep);
 
@@ -34,13 +34,13 @@ const AnalyzePage = ({ step, personal_info, financial_data, analysis_result }: A
         return;
       }
     } else if (currentStep === 3) {
-      // Step 3에서는 analysis_result가 필요
-      if (!analysis_result || Object.keys(analysis_result).length === 0) {
+      // Step 3에서는 financial_analysis_result가 필요
+      if (!financial_analysis_result) {
         router.visit('/');
         return;
       }
     }
-  }, [currentStep, personal_info, financial_data, analysis_result]);
+  }, [currentStep, personal_info, financial_data, financial_analysis_result]);
   const [formData, setFormData] = useState({
     fullName: personal_info?.fullName || "",
     gender: personal_info?.gender || "",
@@ -122,7 +122,7 @@ const AnalyzePage = ({ step, personal_info, financial_data, analysis_result }: A
   }
 
   if (currentStep === 3) {
-    return <Step3Results formData={formData} analysisResult={analysis_result} />;
+    return <Step3Results formData={formData} financialAnalysisResult={financial_analysis_result} />;
   }
 
   return null;
