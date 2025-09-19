@@ -50,11 +50,19 @@ defmodule PiggybankWeb.PageController do
   def submit_step2(conn, %{"financial_data" => financial_data}) do
     personal_info = get_session(conn, :personal_info)
 
-    # 분석 계산 수행
-    analysis_result = calculate_analysis(personal_info, financial_data)
+    baml_result = Piggybank.BamlClient.AnalyzeFinancialData.call(%{input: financial_data})
+
+    financial_analysis_result =
+      with {:ok, analyzed_data} <- baml_result,
+           {:ok, script_result} <-
+             Piggybank.FinanceAi.FinanceModel.run_python_script(analyzed_data) do
+        script_result
+      else
+        _ -> nil
+      end
 
     conn
-    |> put_session(:analysis_result, analysis_result)
+    |> put_session(:financial_analysis_result, financial_analysis_result)
     |> redirect(to: "/analyze/step/3")
   end
 
@@ -79,13 +87,13 @@ defmodule PiggybankWeb.PageController do
 
       "3" ->
         personal_info = get_session(conn, :personal_info) || %{}
-        analysis_result = get_session(conn, :analysis_result) || %{}
+        financial_analysis_result = get_session(conn, :financial_analysis_result) || %{}
 
         conn
         |> assign(:page_title, "분석 결과")
         |> assign_prop(:step, step)
         |> assign_prop(:personal_info, personal_info)
-        |> assign_prop(:analysis_result, analysis_result)
+        |> assign_prop(:financial_analysis_result, financial_analysis_result)
         |> render_inertia("AnalyzePage")
 
       _ ->
@@ -125,71 +133,6 @@ defmodule PiggybankWeb.PageController do
       "age" => age,
       "companyName" => personal_info["companyName"] || ""
     }
-  end
-
-  # 분석 계산 로직
-  defp calculate_analysis(personal_info, financial_data) do
-    # TODO: 실제 분석 로직 구현
-    %{
-      total_income: calculate_total_income(financial_data),
-      total_spending: calculate_total_spending(financial_data),
-      total_investment: calculate_total_investment(financial_data),
-      savings_rate: calculate_savings_rate(financial_data),
-      recommendations: generate_recommendations(personal_info, financial_data)
-    }
-  end
-
-  defp calculate_total_income(financial_data) do
-    financial_data["income"]
-    |> Enum.reduce(0, fn item, acc ->
-      amount = parse_amount(item["amount"])
-      acc + amount
-    end)
-  end
-
-  defp calculate_total_spending(financial_data) do
-    financial_data["spending"]
-    |> Enum.reduce(0, fn item, acc ->
-      amount = parse_amount(item["amount"])
-      acc + amount
-    end)
-  end
-
-  defp calculate_total_investment(financial_data) do
-    financial_data["investment"]
-    |> Enum.reduce(0, fn item, acc ->
-      amount = parse_amount(item["amount"])
-      acc + amount
-    end)
-  end
-
-  defp calculate_savings_rate(financial_data) do
-    income = calculate_total_income(financial_data)
-    spending = calculate_total_spending(financial_data)
-
-    if income > 0 do
-      ((income - spending) / income * 100) |> Float.round(1)
-    else
-      0.0
-    end
-  end
-
-  defp generate_recommendations(_personal_info, financial_data) do
-    savings_rate = calculate_savings_rate(financial_data)
-
-    cond do
-      savings_rate < 10 ->
-        [
-          "지출을 줄이고 저축을 늘려보세요",
-          "비필수 지출을 재검토해보세요"
-        ]
-
-      savings_rate < 20 ->
-        ["저축률이 양호합니다", "투자를 고려해보세요"]
-
-      true ->
-        ["훌륭한 저축률입니다!", "다양한 투자 옵션을 검토해보세요"]
-    end
   end
 
   defp parse_amount(amount_string) do

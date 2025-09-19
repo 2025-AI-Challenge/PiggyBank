@@ -1,5 +1,16 @@
-import React from "react";
-import { User, Calendar, Users, Building, DollarSign, CreditCard, TrendingUp, ChevronDown, Home } from "lucide-react";
+import React, { useState } from "react";
+import {
+  User,
+  Calendar,
+  Users,
+  Building,
+  DollarSign,
+  CreditCard,
+  TrendingUp,
+  ChevronDown,
+  Home,
+  Loader2,
+} from "lucide-react";
 
 interface FinancialItem {
   id: number;
@@ -27,7 +38,12 @@ interface FinancialData {
 interface Step2FinancialDataProps {
   formData: FormData;
   financialData: FinancialData;
-  onFinancialUpdate: (section: keyof FinancialData, itemId: number, field: "category" | "frequency", value: string) => void;
+  onFinancialUpdate: (
+    section: keyof FinancialData,
+    itemId: number,
+    field: "category" | "frequency",
+    value: string,
+  ) => void;
   onSubmit: () => void;
 }
 
@@ -37,6 +53,7 @@ const Step2FinancialData: React.FC<Step2FinancialDataProps> = ({
   onFinancialUpdate,
   onSubmit,
 }) => {
+  const [isSubmitting, setIsSubmitting] = useState(false);
   const categoryOptions = ["필수", "선택적"];
   const frequencyOptions = ["정기적", "일회성"];
 
@@ -44,37 +61,43 @@ const Step2FinancialData: React.FC<Step2FinancialDataProps> = ({
     const allItems = [
       ...financialData.income,
       ...financialData.spending,
-      ...financialData.investment
+      ...financialData.investment,
     ];
 
-    return allItems.every(item => {
+    return allItems.every((item) => {
       if (!item.editable) return true;
       return item.category !== "" && item.frequency !== "";
     });
   };
 
   const handleSubmit = async () => {
-    if (!isFormValid()) return;
+    if (!isFormValid() || isSubmitting) return;
 
+    setIsSubmitting(true);
     try {
-      const response = await fetch('/analyze/step2', {
-        method: 'POST',
+      const response = await fetch("/analyze/step2", {
+        method: "POST",
         headers: {
-          'Content-Type': 'application/json',
-          'X-CSRF-Token': document.querySelector('meta[name="csrf-token"]')?.getAttribute('content') || '',
+          "Content-Type": "application/json",
+          "X-CSRF-Token":
+            document
+              .querySelector('meta[name="csrf-token"]')
+              ?.getAttribute("content") || "",
         },
         body: JSON.stringify({
-          financial_data: financialData
+          financial_data: financialData,
         }),
       });
 
       if (response.ok) {
-        window.location.href = '/analyze/step/3';
+        window.location.href = "/analyze/step/3";
       } else {
-        console.error('Failed to submit step 2');
+        console.error("Failed to submit step 2");
+        setIsSubmitting(false);
       }
     } catch (error) {
-      console.error('Error submitting step 2:', error);
+      console.error("Error submitting step 2:", error);
+      setIsSubmitting(false);
     }
   };
 
@@ -104,7 +127,9 @@ const Step2FinancialData: React.FC<Step2FinancialDataProps> = ({
 
         {/* Profile Summary */}
         <div className="bg-white rounded-xl shadow-lg p-6 mb-6">
-          <h2 className="text-lg font-semibold text-gray-900 mb-4">프로필 요약</h2>
+          <h2 className="text-lg font-semibold text-gray-900 mb-4">
+            프로필 요약
+          </h2>
           <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
             <div className="flex items-center space-x-3">
               <div className="w-10 h-10 bg-blue-100 rounded-lg flex items-center justify-center">
@@ -112,7 +137,9 @@ const Step2FinancialData: React.FC<Step2FinancialDataProps> = ({
               </div>
               <div>
                 <p className="text-xs text-gray-500">이름</p>
-                <p className="text-sm font-medium text-gray-900">{formData.fullName || "○○○"}</p>
+                <p className="text-sm font-medium text-gray-900">
+                  {formData.fullName || "○○○"}
+                </p>
               </div>
             </div>
             <div className="flex items-center space-x-3">
@@ -121,7 +148,9 @@ const Step2FinancialData: React.FC<Step2FinancialDataProps> = ({
               </div>
               <div>
                 <p className="text-xs text-gray-500">나이</p>
-                <p className="text-sm font-medium text-gray-900">{formData.age || "20"}세</p>
+                <p className="text-sm font-medium text-gray-900">
+                  {formData.age || "20"}세
+                </p>
               </div>
             </div>
             <div className="flex items-center space-x-3">
@@ -130,7 +159,15 @@ const Step2FinancialData: React.FC<Step2FinancialDataProps> = ({
               </div>
               <div>
                 <p className="text-xs text-gray-500">성별</p>
-                <p className="text-sm font-medium text-gray-900">{formData.gender === 'male' ? '남성' : formData.gender === 'female' ? '여성' : formData.gender === 'other' ? '기타' : '남성'}</p>
+                <p className="text-sm font-medium text-gray-900">
+                  {formData.gender === "male"
+                    ? "남성"
+                    : formData.gender === "female"
+                      ? "여성"
+                      : formData.gender === "other"
+                        ? "기타"
+                        : "남성"}
+                </p>
               </div>
             </div>
             <div className="flex items-center space-x-3">
@@ -139,7 +176,9 @@ const Step2FinancialData: React.FC<Step2FinancialDataProps> = ({
               </div>
               <div>
                 <p className="text-xs text-gray-500">회사</p>
-                <p className="text-sm font-medium text-gray-900">{formData.companyName || "애널라이즈"}</p>
+                <p className="text-sm font-medium text-gray-900">
+                  {formData.companyName || "애널라이즈"}
+                </p>
               </div>
             </div>
           </div>
@@ -154,37 +193,56 @@ const Step2FinancialData: React.FC<Step2FinancialDataProps> = ({
             </div>
             <div className="space-y-4">
               {financialData.income.map((item, index) => (
-                <div key={item.id} className="border border-green-200 rounded-lg p-4 bg-green-50">
+                <div
+                  key={item.id}
+                  className="border border-green-200 rounded-lg p-4 bg-green-50"
+                >
                   <div className="flex items-center justify-between mb-2">
                     <span className="text-sm font-medium text-gray-900">
                       {index + 1}. {item.name}
                     </span>
                   </div>
-                  <p className="text-lg font-semibold text-green-700 mb-3">{item.amount}</p>
+                  <p className="text-lg font-semibold text-green-700 mb-3">
+                    {item.amount}
+                  </p>
                   <div className="grid grid-cols-2 gap-4">
                     <div>
                       <p className="text-xs text-gray-500 mb-1">카테고리</p>
                       <div className="relative">
                         <select
                           value={item.category}
-                          onChange={(e) => onFinancialUpdate("income", item.id, "category", e.target.value)}
-                          disabled={!item.editable}
+                          onChange={(e) =>
+                            onFinancialUpdate(
+                              "income",
+                              item.id,
+                              "category",
+                              e.target.value,
+                            )
+                          }
+                          disabled={!item.editable || isSubmitting}
                           className={`appearance-none w-full border rounded px-3 py-2 pr-8 text-sm focus:ring-2 focus:ring-green-500 focus:border-transparent ${
-                            item.editable
+                            item.editable && !isSubmitting
                               ? "bg-white border-gray-300"
                               : "bg-gray-50 border-gray-200 text-gray-500 cursor-not-allowed"
                           }`}
                           style={{
-                            appearance: 'none',
-                            WebkitAppearance: 'none',
-                            MozAppearance: 'none',
-                            backgroundImage: 'none',
-                            backgroundColor: item.editable ? '#ffffff' : '#f9fafb'
+                            appearance: "none",
+                            WebkitAppearance: "none",
+                            MozAppearance: "none",
+                            backgroundImage: "none",
+                            backgroundColor:
+                              item.editable && !isSubmitting
+                                ? "#ffffff"
+                                : "#f9fafb",
                           }}
                         >
-                          <option value="" disabled>카테고리를 선택하세요</option>
-                          {categoryOptions.map(option => (
-                            <option key={option} value={option}>{option}</option>
+                          <option value="" disabled>
+                            카테고리를 선택하세요
+                          </option>
+                          {categoryOptions.map((option) => (
+                            <option key={option} value={option}>
+                              {option}
+                            </option>
                           ))}
                         </select>
                         <ChevronDown className="absolute right-2 top-2.5 w-4 h-4 text-gray-500 pointer-events-none" />
@@ -195,31 +253,49 @@ const Step2FinancialData: React.FC<Step2FinancialDataProps> = ({
                       <div className="relative">
                         <select
                           value={item.frequency}
-                          onChange={(e) => onFinancialUpdate("income", item.id, "frequency", e.target.value)}
-                          disabled={!item.editable}
+                          onChange={(e) =>
+                            onFinancialUpdate(
+                              "income",
+                              item.id,
+                              "frequency",
+                              e.target.value,
+                            )
+                          }
+                          disabled={!item.editable || isSubmitting}
                           className={`appearance-none w-full border rounded px-3 py-2 pr-8 text-sm focus:ring-2 focus:ring-green-500 focus:border-transparent ${
-                            item.editable
+                            item.editable && !isSubmitting
                               ? "bg-white border-gray-300"
                               : "bg-gray-50 border-gray-200 text-gray-500 cursor-not-allowed"
                           }`}
                           style={{
-                            appearance: 'none',
-                            WebkitAppearance: 'none',
-                            MozAppearance: 'none',
-                            backgroundImage: 'none',
-                            backgroundColor: item.editable ? '#ffffff' : '#f9fafb'
+                            appearance: "none",
+                            WebkitAppearance: "none",
+                            MozAppearance: "none",
+                            backgroundImage: "none",
+                            backgroundColor:
+                              item.editable && !isSubmitting
+                                ? "#ffffff"
+                                : "#f9fafb",
                           }}
                         >
-                          <option value="" disabled>빈도를 선택하세요</option>
-                          {frequencyOptions.map(option => (
-                            <option key={option} value={option}>{option}</option>
+                          <option value="" disabled>
+                            빈도를 선택하세요
+                          </option>
+                          {frequencyOptions.map((option) => (
+                            <option key={option} value={option}>
+                              {option}
+                            </option>
                           ))}
                         </select>
                         <ChevronDown className="absolute right-2 top-2.5 w-4 h-4 text-gray-500 pointer-events-none" />
                       </div>
                     </div>
                   </div>
-                  {item.editable && <p className="text-xs text-gray-400 mt-2 italic">* 카테고리 및 빈도를 몰라서 수동 입력이 필요합니다</p>}
+                  {item.editable && (
+                    <p className="text-xs text-gray-400 mt-2 italic">
+                      * 카테고리 및 빈도를 몰라서 수동 입력이 필요합니다
+                    </p>
+                  )}
                 </div>
               ))}
             </div>
@@ -233,37 +309,56 @@ const Step2FinancialData: React.FC<Step2FinancialDataProps> = ({
             </div>
             <div className="space-y-4">
               {financialData.spending.map((item, index) => (
-                <div key={item.id} className="border border-blue-200 rounded-lg p-4 bg-blue-50">
+                <div
+                  key={item.id}
+                  className="border border-blue-200 rounded-lg p-4 bg-blue-50"
+                >
                   <div className="flex items-center justify-between mb-2">
                     <span className="text-sm font-medium text-gray-900">
                       {index + 1}. {item.name}
                     </span>
                   </div>
-                  <p className="text-lg font-semibold text-blue-700 mb-3">{item.amount}</p>
+                  <p className="text-lg font-semibold text-blue-700 mb-3">
+                    {item.amount}
+                  </p>
                   <div className="grid grid-cols-2 gap-4">
                     <div>
                       <p className="text-xs text-gray-500 mb-1">카테고리</p>
                       <div className="relative">
                         <select
                           value={item.category}
-                          onChange={(e) => onFinancialUpdate("spending", item.id, "category", e.target.value)}
-                          disabled={!item.editable}
+                          onChange={(e) =>
+                            onFinancialUpdate(
+                              "spending",
+                              item.id,
+                              "category",
+                              e.target.value,
+                            )
+                          }
+                          disabled={!item.editable || isSubmitting}
                           className={`appearance-none w-full border rounded px-3 py-2 pr-8 text-sm focus:ring-2 focus:ring-blue-500 focus:border-transparent ${
-                            item.editable
+                            item.editable && !isSubmitting
                               ? "bg-white border-gray-300"
                               : "bg-gray-50 border-gray-200 text-gray-500 cursor-not-allowed"
                           }`}
                           style={{
-                            appearance: 'none',
-                            WebkitAppearance: 'none',
-                            MozAppearance: 'none',
-                            backgroundImage: 'none',
-                            backgroundColor: item.editable ? '#ffffff' : '#f9fafb'
+                            appearance: "none",
+                            WebkitAppearance: "none",
+                            MozAppearance: "none",
+                            backgroundImage: "none",
+                            backgroundColor:
+                              item.editable && !isSubmitting
+                                ? "#ffffff"
+                                : "#f9fafb",
                           }}
                         >
-                          <option value="" disabled>카테고리를 선택하세요</option>
-                          {categoryOptions.map(option => (
-                            <option key={option} value={option}>{option}</option>
+                          <option value="" disabled>
+                            카테고리를 선택하세요
+                          </option>
+                          {categoryOptions.map((option) => (
+                            <option key={option} value={option}>
+                              {option}
+                            </option>
                           ))}
                         </select>
                         <ChevronDown className="absolute right-2 top-2.5 w-4 h-4 text-gray-500 pointer-events-none" />
@@ -274,31 +369,49 @@ const Step2FinancialData: React.FC<Step2FinancialDataProps> = ({
                       <div className="relative">
                         <select
                           value={item.frequency}
-                          onChange={(e) => onFinancialUpdate("spending", item.id, "frequency", e.target.value)}
-                          disabled={!item.editable}
+                          onChange={(e) =>
+                            onFinancialUpdate(
+                              "spending",
+                              item.id,
+                              "frequency",
+                              e.target.value,
+                            )
+                          }
+                          disabled={!item.editable || isSubmitting}
                           className={`appearance-none w-full border rounded px-3 py-2 pr-8 text-sm focus:ring-2 focus:ring-blue-500 focus:border-transparent ${
-                            item.editable
+                            item.editable && !isSubmitting
                               ? "bg-white border-gray-300"
                               : "bg-gray-50 border-gray-200 text-gray-500 cursor-not-allowed"
                           }`}
                           style={{
-                            appearance: 'none',
-                            WebkitAppearance: 'none',
-                            MozAppearance: 'none',
-                            backgroundImage: 'none',
-                            backgroundColor: item.editable ? '#ffffff' : '#f9fafb'
+                            appearance: "none",
+                            WebkitAppearance: "none",
+                            MozAppearance: "none",
+                            backgroundImage: "none",
+                            backgroundColor:
+                              item.editable && !isSubmitting
+                                ? "#ffffff"
+                                : "#f9fafb",
                           }}
                         >
-                          <option value="" disabled>빈도를 선택하세요</option>
-                          {frequencyOptions.map(option => (
-                            <option key={option} value={option}>{option}</option>
+                          <option value="" disabled>
+                            빈도를 선택하세요
+                          </option>
+                          {frequencyOptions.map((option) => (
+                            <option key={option} value={option}>
+                              {option}
+                            </option>
                           ))}
                         </select>
                         <ChevronDown className="absolute right-2 top-2.5 w-4 h-4 text-gray-500 pointer-events-none" />
                       </div>
                     </div>
                   </div>
-                  {item.editable && <p className="text-xs text-gray-400 mt-2 italic">* 카테고리 및 빈도를 몰라서 수동 입력이 필요합니다</p>}
+                  {item.editable && (
+                    <p className="text-xs text-gray-400 mt-2 italic">
+                      * 카테고리 및 빈도를 몰라서 수동 입력이 필요합니다
+                    </p>
+                  )}
                 </div>
               ))}
             </div>
@@ -312,7 +425,10 @@ const Step2FinancialData: React.FC<Step2FinancialDataProps> = ({
             </div>
             <div className="space-y-4">
               {financialData.investment.map((item, index) => (
-                <div key={item.id} className="border border-purple-200 rounded-lg p-4 bg-purple-50">
+                <div
+                  key={item.id}
+                  className="border border-purple-200 rounded-lg p-4 bg-purple-50"
+                >
                   <div className="flex items-center justify-between mb-2">
                     <div className="flex items-center space-x-3">
                       <div className="w-8 h-8 bg-white rounded-lg flex items-center justify-center">
@@ -323,31 +439,47 @@ const Step2FinancialData: React.FC<Step2FinancialDataProps> = ({
                       </span>
                     </div>
                   </div>
-                  <p className="text-lg font-semibold text-purple-700 mb-3">{item.amount}</p>
+                  <p className="text-lg font-semibold text-purple-700 mb-3">
+                    {item.amount}
+                  </p>
                   <div className="grid grid-cols-2 gap-4">
                     <div>
                       <p className="text-xs text-gray-500 mb-1">카테고리</p>
                       <div className="relative">
                         <select
                           value={item.category}
-                          onChange={(e) => onFinancialUpdate("investment", item.id, "category", e.target.value)}
-                          disabled={!item.editable}
+                          onChange={(e) =>
+                            onFinancialUpdate(
+                              "investment",
+                              item.id,
+                              "category",
+                              e.target.value,
+                            )
+                          }
+                          disabled={!item.editable || isSubmitting}
                           className={`appearance-none w-full border rounded px-3 py-2 pr-8 text-sm focus:ring-2 focus:ring-purple-500 focus:border-transparent ${
-                            item.editable
+                            item.editable && !isSubmitting
                               ? "bg-white border-gray-300"
                               : "bg-gray-50 border-gray-200 text-gray-500 cursor-not-allowed"
                           }`}
                           style={{
-                            appearance: 'none',
-                            WebkitAppearance: 'none',
-                            MozAppearance: 'none',
-                            backgroundImage: 'none',
-                            backgroundColor: item.editable ? '#ffffff' : '#f9fafb'
+                            appearance: "none",
+                            WebkitAppearance: "none",
+                            MozAppearance: "none",
+                            backgroundImage: "none",
+                            backgroundColor:
+                              item.editable && !isSubmitting
+                                ? "#ffffff"
+                                : "#f9fafb",
                           }}
                         >
-                          <option value="" disabled>카테고리를 선택하세요</option>
-                          {categoryOptions.map(option => (
-                            <option key={option} value={option}>{option}</option>
+                          <option value="" disabled>
+                            카테고리를 선택하세요
+                          </option>
+                          {categoryOptions.map((option) => (
+                            <option key={option} value={option}>
+                              {option}
+                            </option>
                           ))}
                         </select>
                         <ChevronDown className="absolute right-2 top-2.5 w-4 h-4 text-gray-500 pointer-events-none" />
@@ -358,31 +490,49 @@ const Step2FinancialData: React.FC<Step2FinancialDataProps> = ({
                       <div className="relative">
                         <select
                           value={item.frequency}
-                          onChange={(e) => onFinancialUpdate("investment", item.id, "frequency", e.target.value)}
-                          disabled={!item.editable}
+                          onChange={(e) =>
+                            onFinancialUpdate(
+                              "investment",
+                              item.id,
+                              "frequency",
+                              e.target.value,
+                            )
+                          }
+                          disabled={!item.editable || isSubmitting}
                           className={`appearance-none w-full border rounded px-3 py-2 pr-8 text-sm focus:ring-2 focus:ring-purple-500 focus:border-transparent ${
-                            item.editable
+                            item.editable && !isSubmitting
                               ? "bg-white border-gray-300"
                               : "bg-gray-50 border-gray-200 text-gray-500 cursor-not-allowed"
                           }`}
                           style={{
-                            appearance: 'none',
-                            WebkitAppearance: 'none',
-                            MozAppearance: 'none',
-                            backgroundImage: 'none',
-                            backgroundColor: item.editable ? '#ffffff' : '#f9fafb'
+                            appearance: "none",
+                            WebkitAppearance: "none",
+                            MozAppearance: "none",
+                            backgroundImage: "none",
+                            backgroundColor:
+                              item.editable && !isSubmitting
+                                ? "#ffffff"
+                                : "#f9fafb",
                           }}
                         >
-                          <option value="" disabled>빈도를 선택하세요</option>
-                          {frequencyOptions.map(option => (
-                            <option key={option} value={option}>{option}</option>
+                          <option value="" disabled>
+                            빈도를 선택하세요
+                          </option>
+                          {frequencyOptions.map((option) => (
+                            <option key={option} value={option}>
+                              {option}
+                            </option>
                           ))}
                         </select>
                         <ChevronDown className="absolute right-2 top-2.5 w-4 h-4 text-gray-500 pointer-events-none" />
                       </div>
                     </div>
                   </div>
-                  {item.editable && <p className="text-xs text-gray-400 mt-2 italic">* 카테고리 및 빈도를 몰라서 수동 입력이 필요합니다</p>}
+                  {item.editable && (
+                    <p className="text-xs text-gray-400 mt-2 italic">
+                      * 카테고리 및 빈도를 몰라서 수동 입력이 필요합니다
+                    </p>
+                  )}
                 </div>
               ))}
             </div>
@@ -393,25 +543,45 @@ const Step2FinancialData: React.FC<Step2FinancialDataProps> = ({
         <div className="mt-8 bg-gradient-to-r from-blue-500 to-purple-600 rounded-xl p-6 text-white text-center">
           <div className="mb-4">
             <div className="w-12 h-12 bg-white bg-opacity-20 rounded-lg flex items-center justify-center mx-auto mb-3">
-              <TrendingUp className="w-6 h-6 text-white" />
+              {isSubmitting ? (
+                <Loader2 className="w-6 h-6 text-white animate-spin" />
+              ) : (
+                <TrendingUp className="w-6 h-6 text-white" />
+              )}
             </div>
-            <h3 className="text-xl font-semibold mb-2">분석을 시작할 준비가 되셨나요?</h3>
+            <h3 className="text-xl font-semibold mb-2">
+              {isSubmitting
+                ? "분석 중입니다..."
+                : "분석을 시작할 준비가 되셨나요?"}
+            </h3>
             <p className="text-blue-100 text-sm">
-              귀하의 분류를 바탕으로 개인화된 금융 인사이트와 추천사항을 제공할 거예요.
+              {isSubmitting
+                ? "AI가 귀하의 금융 데이터를 분석하고 있습니다. 잠시만 기다려 주세요."
+                : "귀하의 분류를 바탕으로 개인화된 금융 인사이트와 추천사항을 제공할 거예요."}
             </p>
           </div>
           <button
             onClick={handleSubmit}
-            disabled={!isFormValid()}
-            className={`px-8 py-3 rounded-lg font-medium transition-colors ${
-              isFormValid()
+            disabled={!isFormValid() || isSubmitting}
+            className={`px-8 py-3 rounded-lg font-medium transition-colors flex items-center justify-center mx-auto ${
+              isFormValid() && !isSubmitting
                 ? "bg-white text-blue-600 hover:bg-gray-50"
                 : "bg-gray-300 text-gray-500 cursor-not-allowed"
             }`}
           >
-            분석 제출 →
+            {isSubmitting ? (
+              <>
+                <span>분석 중...</span>
+              </>
+            ) : (
+              <span>분석 제출 →</span>
+            )}
           </button>
-          <p className="text-xs text-blue-100 mt-3">계속하려면 모든 카테고리 선택을 완료해 주세요</p>
+          <p className="text-xs text-blue-100 mt-3">
+            {isSubmitting
+              ? "분석이 완료되면 자동으로 다음 단계로 이동합니다."
+              : "계속하려면 모든 카테고리 선택을 완료해 주세요"}
+          </p>
         </div>
 
         {/* Progress Indicator */}

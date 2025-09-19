@@ -236,7 +236,7 @@ const Step1PersonalInfo: React.FC<Step1PersonalInfoProps> = ({
               {isLoading ? (
                 <>
                   <Loader2 className="animate-spin w-5 h-5 mr-2" />
-                  분석 중...
+                  금융 데이터 불러오는 중...
                 </>
               ) : (
                 "내 프로필 분석하기"
