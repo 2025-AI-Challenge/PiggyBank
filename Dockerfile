@@ -82,6 +82,8 @@ FROM ${RUNNER_IMAGE}
 
 RUN apt-get update -y && \
   apt-get install -y libstdc++6 openssl libncurses6 locales ca-certificates \
+  python3 python3-pip python3-dev \
+  && pip3 install --break-system-packages pandas scikit-learn numpy \
   && apt-get clean && rm -f /var/lib/apt/lists/*_*
 
 # Set the locale
@@ -99,6 +101,9 @@ ENV MIX_ENV="prod"
 
 # Only copy the final release from the build stage
 COPY --from=builder --chown=nobody:root /app/_build/${MIX_ENV}/rel/piggybank ./
+
+# Copy model files
+COPY --from=builder --chown=nobody:root /app/priv/models ./priv/models
 
 USER nobody
 

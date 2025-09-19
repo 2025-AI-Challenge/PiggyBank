@@ -7,12 +7,17 @@ defmodule Piggybank.FinanceAi.FinanceModel do
     # BAML struct를 Python 파라미터 맵으로 변환
     input_data = convert_baml_to_python_params(baml_result)
 
+    # 현재 작업 디렉토리 기반으로 절대 경로 구성
+    model_path = Path.join([Application.app_dir(:piggybank, "priv"), "models", "Fin_model_v1.pkl"])
+
     python_code = """
     import pandas as pd
     import pickle
+    import os
 
     # 모델 로드
-    with open('priv/models/Fin_model_v1.pkl', 'rb') as f:
+    model_path = '#{model_path}'
+    with open(model_path, 'rb') as f:
         model_data = pickle.load(f)
 
     # 각 트리에 누락된 속성 추가
