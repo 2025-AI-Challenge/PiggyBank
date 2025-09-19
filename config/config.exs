@@ -7,6 +7,19 @@
 # General application configuration
 import Config
 
+config :pythonx, :uv_init,
+  pyproject_toml: """
+  [project]
+  name = "project"
+  version = "0.0.0"
+  requires-python = "==3.13.*"
+  dependencies = [
+    "numpy",
+    "pandas",
+    "scikit-learn"
+  ]
+  """
+
 config :inertia, endpoint: PiggybankWeb.Endpoint
 
 config :piggybank,
