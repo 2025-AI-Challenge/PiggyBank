@@ -1,0 +1,320 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FinFit - 재무건전성 분석</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+</head>
+<body>
+    <div class="app-container">
+        <header class="modern-header">
+            <div class="header-content">
+                <div class="logo-section">
+                    <div class="brand-text">
+                        <h1><img src="{{ url_for('static', filename='logo.png') }}" alt="FinFit" class="logo-icon">FinFit</h1>
+                        <p>Finance Health Analytics</p>
+                    </div>
+                </div>
+                <div class="header-subtitle">
+                    <p>AI 기반 개인 재무건전성 분석 플랫폼</p>
+                </div>
+            </div>
+        </header>
+
+        <main class="main-content">
+            <div class="analysis-container">
+                <div class="form-card">
+                    <div class="card-header">
+                        <i class="fas fa-chart-line"></i>
+                        <h2>재무 정보 입력</h2>
+                        <p>정확한 분석을 위해 최근 3개월 평균 데이터를 입력해주세요</p>
+                        <div class="sample-buttons">
+                            <button type="button" class="sample-btn" id="sampleBtn1">
+                                <i class="fas fa-star"></i>
+                                샘플: 우수 사례
+                            </button>
+                            <button type="button" class="sample-btn" id="sampleBtn2">
+                                <i class="fas fa-balance-scale"></i>
+                                샘플: 평균 사례
+                            </button>
+                            <button type="button" class="sample-btn" id="sampleBtn3">
+                                <i class="fas fa-exclamation-triangle"></i>
+                                샘플: 개선 필요
+                            </button>
+                        </div>
+                    </div>
+                    
+                    <form id="financeForm" class="modern-form">
+                        <div class="form-section">
+                            <div class="section-header">
+                                <i class="fas fa-wallet"></i>
+                                <h3>기본 재무 정보</h3>
+                            </div>
+                            <div class="form-grid">
+                                <div class="form-group">
+                                    <label for="income">
+                                        <i class="fas fa-coins"></i>
+                                        월 소득 (만원)
+                                    </label>
+                                    <input type="number" id="income" name="income" required min="100" max="3000" step="10" placeholder="400">
+                                    <small>세후 실수령액을 입력해주세요</small>
+                                </div>
+                                <div class="form-group">
+                                    <label for="total_spending">
+                                        <i class="fas fa-credit-card"></i>
+                                        월 총 지출 (만원)
+                                    </label>
+                                    <input type="number" id="total_spending" name="total_spending" required min="50" max="2000" step="10" placeholder="250">
+                                    <small>모든 지출의 합계를 입력해주세요</small>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="form-section">
+                            <div class="section-header">
+                                <i class="fas fa-exchange-alt"></i>
+                                <h3>거래 패턴 정보</h3>
+                            </div>
+                            <div class="form-grid">
+                                <div class="form-group">
+                                    <label for="n_transactions">
+                                        <i class="fas fa-list-ol"></i>
+                                        월 거래 건수
+                                    </label>
+                                    <input type="number" id="n_transactions" name="n_transactions" required min="10" max="1000" step="1" placeholder="150">
+                                    <small>카드 및 현금 거래 모두 포함</small>
+                                </div>
+                                <div class="form-group">
+                                    <label for="mean_spending">
+                                        <i class="fas fa-calculator"></i>
+                                        평균 거래 금액 (만원)
+                                    </label>
+                                    <input type="number" id="mean_spending" name="mean_spending" required min="0.1" max="50" step="0.1" placeholder="1.5">
+                                    <small>총 지출 ÷ 거래 건수</small>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="form-section">
+                            <div class="section-header">
+                                <i class="fas fa-chart-pie"></i>
+                                <h3>지출 카테고리 분석</h3>
+                                <p>각 카테고리별 지출 비율을 입력하세요 (합계 100%)</p>
+                            </div>
+                            <div class="category-grid">
+                                <div class="category-item">
+                                    <div class="category-icon housing">🏠</div>
+                                    <label for="housing-amount">주거비</label>
+                                    <div class="input-wrapper">
+                                        <input type="number" id="housing-amount" name="housing" required min="0" max="100" step="1" placeholder="20">
+                                        <span class="input-suffix">%</span>
+                                    </div>
+                                </div>
+                                <div class="category-item">
+                                    <div class="category-icon food">🍽️</div>
+                                    <label for="food-amount">식료품음료</label>
+                                    <div class="input-wrapper">
+                                        <input type="number" id="food-amount" name="food" required min="0" max="100" step="1" placeholder="16">
+                                        <span class="input-suffix">%</span>
+                                    </div>
+                                </div>
+                                <div class="category-item">
+                                    <div class="category-icon transport">🚗</div>
+                                    <label for="transport-amount">교통비</label>
+                                    <div class="input-wrapper">
+                                        <input type="number" id="transport-amount" name="transport" required min="0" max="100" step="1" placeholder="18">
+                                        <span class="input-suffix">%</span>
+                                    </div>
+                                </div>
+                                <div class="category-item">
+                                    <div class="category-icon entertainment">🎬</div>
+                                    <label for="entertainment-amount">오락문화</label>
+                                    <div class="input-wrapper">
+                                        <input type="number" id="entertainment-amount" name="entertainment" required min="0" max="100" step="1" placeholder="9">
+                                        <span class="input-suffix">%</span>
+                                    </div>
+                                </div>
+                                <div class="category-item">
+                                    <div class="category-icon education">📚</div>
+                                    <label for="education-amount">교육육아</label>
+                                    <div class="input-wrapper">
+                                        <input type="number" id="education-amount" name="education" required min="0" max="100" step="1" placeholder="10">
+                                        <span class="input-suffix">%</span>
+                                    </div>
+                                </div>
+                                <div class="category-item">
+                                    <div class="category-icon medical">🏥</div>
+                                    <label for="medical-amount">보건의료</label>
+                                    <div class="input-wrapper">
+                                        <input type="number" id="medical-amount" name="medical" required min="0" max="100" step="1" placeholder="12">
+                                        <span class="input-suffix">%</span>
+                                    </div>
+                                </div>
+                                <div class="category-item">
+                                    <div class="category-icon other">🛍️</div>
+                                    <label for="other-amount">기타소비</label>
+                                    <div class="input-wrapper">
+                                        <input type="number" id="other-amount" name="other" required min="0" max="100" step="1" placeholder="15">
+                                        <span class="input-suffix">%</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="form-actions">
+                            <button type="submit" class="analyze-btn">
+                                <i class="fas fa-chart-line"></i>
+                                <span class="btn-text">AI 재무건전성 분석 시작</span>
+                                <span class="btn-loading">
+                                    <i class="fas fa-spinner fa-spin"></i>
+                                    분석 중...
+                                </span>
+                            </button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </main>
+
+        <div class="results-container" id="results" style="display: none;">
+            <div class="results-header">
+                <div class="results-title">
+                    <i class="fas fa-chart-bar"></i>
+                    <h2>재무건전성 분석 결과</h2>
+                </div>
+                <div class="analysis-date" id="analysisDate"></div>
+            </div>
+            
+            <div class="results-grid">
+                <div class="result-card primary-score">
+                    <div class="card-header">
+                        <i class="fas fa-trophy"></i>
+                        <h3>종합 점수</h3>
+                    </div>
+                    <div class="score-display">
+                        <div class="score-circle">
+                            <svg class="score-ring" viewBox="0 0 120 120">
+                                <circle class="score-ring-bg" cx="60" cy="60" r="50"></circle>
+                                <circle class="score-ring-fill" cx="60" cy="60" r="50" id="scoreRing"></circle>
+                            </svg>
+                            <div class="score-content">
+                                <div class="score-number" id="scoreNumber">0</div>
+                                <div class="score-label">점</div>
+                            </div>
+                        </div>
+                        <div class="risk-indicator" id="riskIndicator">
+                            <div class="risk-badge" id="riskBadge">
+                                <span class="risk-level" id="riskLevel">분석 중</span>
+                            </div>
+                            <p class="risk-description" id="riskDescription"></p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="result-card persona-card">
+                    <div class="card-header">
+                        <i class="fas fa-user-circle"></i>
+                        <h3>재무 페르소나</h3>
+                    </div>
+                    <div class="persona-display">
+                        <div class="persona-avatar">
+                            <div class="persona-emoji" id="personaEmoji">🤔</div>
+                            <div class="persona-level" id="personaLevel"></div>
+                        </div>
+                        <div class="persona-info">
+                            <div class="persona-name" id="personaName">분석 중</div>
+                            <div class="persona-description" id="personaDescription">재무 상태를 분석하고 있습니다...</div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="result-card savings-card">
+                    <div class="card-header">
+                        <i class="fas fa-piggy-bank"></i>
+                        <h3>재무 현황</h3>
+                    </div>
+                    <div class="savings-grid">
+                        <div class="savings-item">
+                            <div class="savings-icon income">
+                                <i class="fas fa-arrow-up"></i>
+                            </div>
+                            <div class="savings-details">
+                                <span class="savings-label">월 소득</span>
+                                <span class="savings-value" id="incomeAmount">0만원</span>
+                            </div>
+                        </div>
+                        <div class="savings-item">
+                            <div class="savings-icon spending">
+                                <i class="fas fa-arrow-down"></i>
+                            </div>
+                            <div class="savings-details">
+                                <span class="savings-label">월 지출</span>
+                                <span class="savings-value" id="spendingAmount">0만원</span>
+                            </div>
+                        </div>
+                        <div class="savings-item">
+                            <div class="savings-icon savings">
+                                <i class="fas fa-coins"></i>
+                            </div>
+                            <div class="savings-details">
+                                <span class="savings-label">월 저축</span>
+                                <span class="savings-value" id="savingsAmount">0만원</span>
+                            </div>
+                        </div>
+                        <div class="savings-item">
+                            <div class="savings-icon rate">
+                                <i class="fas fa-percentage"></i>
+                            </div>
+                            <div class="savings-details">
+                                <span class="savings-label">저축률</span>
+                                <span class="savings-value" id="savingsRate">0%</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="results-row">
+                <div class="result-card chart-card">
+                    <div class="card-header">
+                        <i class="fas fa-chart-pie"></i>
+                        <h3>지출 분석</h3>
+                    </div>
+                    <div class="chart-container">
+                        <canvas id="pieChart" width="300" height="300"></canvas>
+                    </div>
+                    <div class="chart-legend" id="chartLegend"></div>
+                </div>
+
+                <div class="result-card analysis-card">
+                    <div class="card-header">
+                        <i class="fas fa-lightbulb"></i>
+                        <h3>맞춤 조언</h3>
+                    </div>
+                    <div class="analysis-content" id="analysisContent">
+                        <div class="loading-placeholder">
+                            <i class="fas fa-spinner fa-spin"></i>
+                            <p>맞춤형 재무 조언을 생성하고 있습니다...</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="result-card recommendations-card">
+                <div class="card-header">
+                    <i class="fas fa-target"></i>
+                    <h3>개선 방안</h3>
+                </div>
+                <div class="recommendations-grid" id="recommendationsGrid">
+                    <!-- 동적으로 생성됨 -->
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="{{ url_for('static', filename='script.js') }}"></script>
+</body>
+</html>
