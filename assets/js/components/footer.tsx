@@ -16,7 +16,13 @@ const Footer = () => {
         <div className="grid grid-cols-1 md:grid-cols-4 gap-8">
           {/* 브랜드 정보 */}
           <div className="col-span-1 md:col-span-1">
-            <h5 className="text-2xl font-bold text-blue-400 mb-2">FinFit</h5>
+            <div className="mb-4">
+              <img
+                src="/images/logo.svg"
+                alt="FinFit"
+                className="h-36 w-auto"
+              />
+            </div>
             <p className="text-white/80 mb-6 leading-relaxed text-sm">
               청년 전문직을 위한 AI 기반 금융 피트니스 코치입니다. 재정 자유로
               가는 길을 추적하고, 개선하며, 게임화해보세요.

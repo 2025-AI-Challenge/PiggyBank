@@ -219,7 +219,7 @@ const Step2FinancialData: React.FC<Step2FinancialDataProps> = ({
                       </div>
                     </div>
                   </div>
-                  {!item.editable && <p className="text-xs text-gray-400 mt-2 italic">* Auto-filled based on category (editable)</p>}
+                  {item.editable && <p className="text-xs text-gray-400 mt-2 italic">* 카테고리 및 빈도를 몰라서 수동 입력이 필요합니다</p>}
                 </div>
               ))}
             </div>
@@ -298,7 +298,7 @@ const Step2FinancialData: React.FC<Step2FinancialDataProps> = ({
                       </div>
                     </div>
                   </div>
-                  {!item.editable && <p className="text-xs text-gray-400 mt-2 italic">* Auto-filled based on category (editable)</p>}
+                  {item.editable && <p className="text-xs text-gray-400 mt-2 italic">* 카테고리 및 빈도를 몰라서 수동 입력이 필요합니다</p>}
                 </div>
               ))}
             </div>
@@ -382,7 +382,7 @@ const Step2FinancialData: React.FC<Step2FinancialDataProps> = ({
                       </div>
                     </div>
                   </div>
-                  {!item.editable && <p className="text-xs text-gray-400 mt-2 italic">* Auto-filled based on category (editable)</p>}
+                  {item.editable && <p className="text-xs text-gray-400 mt-2 italic">* 카테고리 및 빈도를 몰라서 수동 입력이 필요합니다</p>}
                 </div>
               ))}
             </div>

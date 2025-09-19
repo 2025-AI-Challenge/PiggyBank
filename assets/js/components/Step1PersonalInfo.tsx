@@ -23,6 +23,25 @@ const Step1PersonalInfo: React.FC<Step1PersonalInfoProps> = ({
 }) => {
   const [isLoading, setIsLoading] = useState(false);
 
+  const getAgeError = () => {
+    if (!formData.age.trim()) return '';
+    const age = parseInt(formData.age);
+    if (isNaN(age)) return '올바른 숫자를 입력해주세요.';
+    if (age < 18) return '18세 이상이어야 합니다.';
+    if (age > 100) return '100세 이하여야 합니다.';
+    return '';
+  };
+
+  const isFormValid = () => {
+    const age = parseInt(formData.age);
+    return formData.fullName.trim() !== '' &&
+           formData.gender !== '' &&
+           formData.age.trim() !== '' &&
+           age >= 18 &&
+           age <= 100 &&
+           formData.companyName.trim() !== '';
+  };
+
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     setIsLoading(true);
@@ -88,7 +107,12 @@ const Step1PersonalInfo: React.FC<Step1PersonalInfoProps> = ({
                 value={formData.fullName}
                 onChange={onInputChange}
                 placeholder="성명을 입력하세요"
-                className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent outline-none"
+                disabled={isLoading}
+                className={`w-full px-4 py-3 border rounded-lg focus:ring-2 focus:border-transparent outline-none ${
+                  isLoading
+                    ? 'bg-gray-50 border-gray-200 text-gray-500 cursor-not-allowed'
+                    : 'border-gray-300 focus:ring-blue-500'
+                }`}
                 required
               />
             </div>
@@ -99,35 +123,50 @@ const Step1PersonalInfo: React.FC<Step1PersonalInfoProps> = ({
                 성별 <span className="text-red-500">*</span>
               </label>
               <div className="space-y-3">
-                <label className="flex items-center p-3 border border-gray-300 rounded-lg cursor-pointer hover:bg-gray-50">
+                <label className={`flex items-center p-3 border rounded-lg ${
+                  isLoading
+                    ? 'border-gray-200 bg-gray-50 cursor-not-allowed'
+                    : 'border-gray-300 cursor-pointer hover:bg-gray-50'
+                }`}>
                   <input
                     type="radio"
                     name="gender"
                     value="male"
                     checked={formData.gender === "male"}
                     onChange={() => onGenderChange("male")}
+                    disabled={isLoading}
                     className="w-4 h-4 text-blue-600 focus:ring-blue-500"
                   />
                   <span className="ml-3 text-gray-700">남성</span>
                 </label>
-                <label className="flex items-center p-3 border border-gray-300 rounded-lg cursor-pointer hover:bg-gray-50">
+                <label className={`flex items-center p-3 border rounded-lg ${
+                  isLoading
+                    ? 'border-gray-200 bg-gray-50 cursor-not-allowed'
+                    : 'border-gray-300 cursor-pointer hover:bg-gray-50'
+                }`}>
                   <input
                     type="radio"
                     name="gender"
                     value="female"
                     checked={formData.gender === "female"}
                     onChange={() => onGenderChange("female")}
+                    disabled={isLoading}
                     className="w-4 h-4 text-blue-600 focus:ring-blue-500"
                   />
                   <span className="ml-3 text-gray-700">여성</span>
                 </label>
-                <label className="flex items-center p-3 border border-gray-300 rounded-lg cursor-pointer hover:bg-gray-50">
+                <label className={`flex items-center p-3 border rounded-lg ${
+                  isLoading
+                    ? 'border-gray-200 bg-gray-50 cursor-not-allowed'
+                    : 'border-gray-300 cursor-pointer hover:bg-gray-50'
+                }`}>
                   <input
                     type="radio"
                     name="gender"
                     value="other"
                     checked={formData.gender === "other"}
                     onChange={() => onGenderChange("other")}
+                    disabled={isLoading}
                     className="w-4 h-4 text-blue-600 focus:ring-blue-500"
                   />
                   <span className="ml-3 text-gray-700">기타</span>
@@ -146,9 +185,21 @@ const Step1PersonalInfo: React.FC<Step1PersonalInfoProps> = ({
                 value={formData.age}
                 onChange={onInputChange}
                 placeholder="나이를 입력하세요"
-                className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent outline-none"
+                min="18"
+                max="100"
+                disabled={isLoading}
+                className={`w-full px-4 py-3 border rounded-lg focus:ring-2 focus:border-transparent outline-none ${
+                  isLoading
+                    ? 'bg-gray-50 border-gray-200 text-gray-500 cursor-not-allowed'
+                    : getAgeError()
+                    ? 'border-red-300 focus:ring-red-500'
+                    : 'border-gray-300 focus:ring-blue-500'
+                }`}
                 required
               />
+              {getAgeError() && (
+                <p className="mt-1 text-sm text-red-600">{getAgeError()}</p>
+              )}
             </div>
 
             {/* Company Name */}
@@ -162,7 +213,12 @@ const Step1PersonalInfo: React.FC<Step1PersonalInfoProps> = ({
                 value={formData.companyName}
                 onChange={onInputChange}
                 placeholder="회사명을 입력하세요"
-                className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent outline-none"
+                disabled={isLoading}
+                className={`w-full px-4 py-3 border rounded-lg focus:ring-2 focus:border-transparent outline-none ${
+                  isLoading
+                    ? 'bg-gray-50 border-gray-200 text-gray-500 cursor-not-allowed'
+                    : 'border-gray-300 focus:ring-blue-500'
+                }`}
                 required
               />
             </div>
@@ -170,9 +226,9 @@ const Step1PersonalInfo: React.FC<Step1PersonalInfoProps> = ({
             {/* Submit Button */}
             <button
               type="submit"
-              disabled={isLoading}
+              disabled={isLoading || !isFormValid()}
               className={`w-full py-3 px-4 rounded-lg font-medium transition-all duration-200 flex items-center justify-center ${
-                isLoading
+                isLoading || !isFormValid()
                   ? "bg-gray-400 cursor-not-allowed"
                   : "bg-gradient-to-r from-blue-500 to-purple-600 text-white hover:from-blue-600 hover:to-purple-700"
               }`}

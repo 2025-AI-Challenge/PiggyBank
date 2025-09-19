@@ -51,13 +51,24 @@ defmodule PiggybankWeb.Serializers.FinancialDataSerializer do
   # 카테고리를 프론트엔드에서 사용하는 형태로 정규화
   defp normalize_category(category, editable) when is_binary(category) do
     if editable do
-      "" # editable 항목은 빈 값으로 (사용자가 선택하도록)
+      # editable 항목은 빈 값으로 (사용자가 선택하도록)
+      ""
     else
       case String.downcase(category) do
-        cat when cat in ["primary income", "bonus", "housing", "bills", "living expenses", "transportation"] ->
+        cat
+        when cat in [
+               "primary income",
+               "bonus",
+               "housing",
+               "bills",
+               "living expenses",
+               "transportation"
+             ] ->
           "Essential"
+
         cat when cat in ["leisure", "entertainment"] ->
           "Non-essential"
+
         _ ->
           "Essential"
       end
@@ -69,7 +80,8 @@ defmodule PiggybankWeb.Serializers.FinancialDataSerializer do
   # 빈도를 프론트엔드에서 사용하는 형태로 정규화
   defp normalize_frequency(frequency, editable) when is_binary(frequency) do
     if editable do
-      "" # editable 항목은 빈 값으로 (사용자가 선택하도록)
+      # editable 항목은 빈 값으로 (사용자가 선택하도록)
+      ""
     else
       case String.downcase(frequency) do
         "monthly" -> "Recurring"

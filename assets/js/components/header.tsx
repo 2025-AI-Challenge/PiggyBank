@@ -41,10 +41,8 @@ const Header = () => {
     <header className="bg-white shadow-sm border-b border-gray-200 sticky top-0 z-50">
       <div className="w-full px-4 sm:px-6 lg:px-8">
         <div className="flex justify-between items-center h-20">
-          <Link href="/" className="flex items-center space-x-3">
-            <div className="flex items-center space-x-2">
-              <span className="text-2xl font-bold text-blue-600">FinFit</span>
-            </div>
+          <Link href="/" className="flex items-center">
+            <img src="/images/logo.svg" alt="FinFit" className="h-36 w-auto" />
           </Link>
 
           <nav className="hidden md:flex items-center space-x-8">
