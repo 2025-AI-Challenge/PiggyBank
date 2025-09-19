@@ -56,12 +56,12 @@ const Step1PersonalInfo: React.FC<Step1PersonalInfoProps> = ({
         {/* Header */}
         <div className="text-center mb-8">
           <h1 className="text-3xl font-bold text-gray-900 mb-2">
-            Get <span className="text-blue-600">Started</span>
+            시작하기 <span className="text-blue-600">함께</span>
           </h1>
           <p className="text-gray-600">
-            Please provide your information to begin your financial
+            금융 건강 분석을 시작하기 위해
             <br />
-            health analysis
+            정보를 입력해 주세요
           </p>
         </div>
 
@@ -69,10 +69,10 @@ const Step1PersonalInfo: React.FC<Step1PersonalInfoProps> = ({
         <div className="bg-white rounded-xl shadow-lg p-8">
           <div className="mb-6">
             <h2 className="text-xl font-semibold text-gray-900 text-center mb-2">
-              Your Profile Information
+              개인 프로필 정보
             </h2>
             <p className="text-sm text-gray-600 text-center">
-              We'll use this information to personalize your financial fitness journey
+              이 정보를 통해 개인화된 금융 피트니스 여정을 제공할 거예요
             </p>
           </div>
 
@@ -80,14 +80,14 @@ const Step1PersonalInfo: React.FC<Step1PersonalInfoProps> = ({
             {/* Full Name */}
             <div>
               <label className="block text-sm font-medium text-gray-700 mb-2">
-                Full Name <span className="text-red-500">*</span>
+                성명 <span className="text-red-500">*</span>
               </label>
               <input
                 type="text"
                 name="fullName"
                 value={formData.fullName}
                 onChange={onInputChange}
-                placeholder="Enter your full name"
+                placeholder="성명을 입력하세요"
                 className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent outline-none"
                 required
               />
@@ -96,7 +96,7 @@ const Step1PersonalInfo: React.FC<Step1PersonalInfoProps> = ({
             {/* Gender */}
             <div>
               <label className="block text-sm font-medium text-gray-700 mb-3">
-                Gender <span className="text-red-500">*</span>
+                성별 <span className="text-red-500">*</span>
               </label>
               <div className="space-y-3">
                 <label className="flex items-center p-3 border border-gray-300 rounded-lg cursor-pointer hover:bg-gray-50">
@@ -108,7 +108,7 @@ const Step1PersonalInfo: React.FC<Step1PersonalInfoProps> = ({
                     onChange={() => onGenderChange("male")}
                     className="w-4 h-4 text-blue-600 focus:ring-blue-500"
                   />
-                  <span className="ml-3 text-gray-700">Male</span>
+                  <span className="ml-3 text-gray-700">남성</span>
                 </label>
                 <label className="flex items-center p-3 border border-gray-300 rounded-lg cursor-pointer hover:bg-gray-50">
                   <input
@@ -119,7 +119,7 @@ const Step1PersonalInfo: React.FC<Step1PersonalInfoProps> = ({
                     onChange={() => onGenderChange("female")}
                     className="w-4 h-4 text-blue-600 focus:ring-blue-500"
                   />
-                  <span className="ml-3 text-gray-700">Female</span>
+                  <span className="ml-3 text-gray-700">여성</span>
                 </label>
                 <label className="flex items-center p-3 border border-gray-300 rounded-lg cursor-pointer hover:bg-gray-50">
                   <input
@@ -130,7 +130,7 @@ const Step1PersonalInfo: React.FC<Step1PersonalInfoProps> = ({
                     onChange={() => onGenderChange("other")}
                     className="w-4 h-4 text-blue-600 focus:ring-blue-500"
                   />
-                  <span className="ml-3 text-gray-700">Other</span>
+                  <span className="ml-3 text-gray-700">기타</span>
                 </label>
               </div>
             </div>
@@ -138,14 +138,14 @@ const Step1PersonalInfo: React.FC<Step1PersonalInfoProps> = ({
             {/* Age */}
             <div>
               <label className="block text-sm font-medium text-gray-700 mb-2">
-                Age <span className="text-red-500">*</span>
+                나이 <span className="text-red-500">*</span>
               </label>
               <input
                 type="number"
                 name="age"
                 value={formData.age}
                 onChange={onInputChange}
-                placeholder="Enter your age"
+                placeholder="나이를 입력하세요"
                 className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent outline-none"
                 required
               />
@@ -154,14 +154,14 @@ const Step1PersonalInfo: React.FC<Step1PersonalInfoProps> = ({
             {/* Company Name */}
             <div>
               <label className="block text-sm font-medium text-gray-700 mb-2">
-                Company Name <span className="text-red-500">*</span>
+                회사명 <span className="text-red-500">*</span>
               </label>
               <input
                 type="text"
                 name="companyName"
                 value={formData.companyName}
                 onChange={onInputChange}
-                placeholder="Enter your company name"
+                placeholder="회사명을 입력하세요"
                 className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent outline-none"
                 required
               />
@@ -180,10 +180,10 @@ const Step1PersonalInfo: React.FC<Step1PersonalInfoProps> = ({
               {isLoading ? (
                 <>
                   <Loader2 className="animate-spin w-5 h-5 mr-2" />
-                  Analyzing...
+                  분석 중...
                 </>
               ) : (
-                "Analyze My Profile"
+                "내 프로필 분석하기"
               )}
             </button>
 
@@ -191,9 +191,9 @@ const Step1PersonalInfo: React.FC<Step1PersonalInfoProps> = ({
             <div className="flex items-start space-x-3 p-4 bg-blue-50 rounded-lg">
               <Shield className="w-5 h-5 text-blue-600 mt-0.5 flex-shrink-0" />
               <div className="text-sm">
-                <span className="font-medium text-blue-900">Privacy Protected:</span>
+                <span className="font-medium text-blue-900">개인정보 보호:</span>
                 <span className="text-blue-700">
-                  {" "}Your information is encrypted and secure. We use this data only to provide personalized financial insights and never share it with third parties.
+                  {" "}귀하의 정보는 암호화되어 안전하게 보관됩니다. 이 데이터는 개인화된 금융 인사이트 제공용도로만 사용되며, 제3자와 공유하지 않습니다.
                 </span>
               </div>
             </div>
@@ -215,7 +215,7 @@ const Step1PersonalInfo: React.FC<Step1PersonalInfoProps> = ({
               3
             </div>
           </div>
-          <p className="text-sm text-gray-600">Step 1 of 3: Personal Information</p>
+          <p className="text-sm text-gray-600">1단계 / 총 3단계: 개인 정보</p>
         </div>
       </div>
     </div>

@@ -18,8 +18,8 @@ const Footer = () => {
           <div className="col-span-1 md:col-span-1">
             <h5 className="text-2xl font-bold text-blue-400 mb-2">FinFit</h5>
             <p className="text-white/80 mb-6 leading-relaxed text-sm">
-              Your AI-powered financial fitness coach for young professionals.
-              Track, improve, and gamify your path to financial freedom.
+              청년 전문직을 위한 AI 기반 금융 피트니스 코치입니다. 재정 자유로
+              가는 길을 추적하고, 개선하며, 게임화해보세요.
             </p>
             <div className="flex space-x-3">
               <a
@@ -43,16 +43,16 @@ const Footer = () => {
             </div>
           </div>
 
-          {/* Product */}
+          {/* 제품 */}
           <div>
-            <h6 className="text-lg font-semibold mb-4">Product</h6>
+            <h6 className="text-lg font-semibold mb-4">제품</h6>
             <ul className="space-y-3">
               <li>
                 <a
                   href="/features"
                   className="text-gray-300 hover:text-white transition-colors text-sm"
                 >
-                  Features
+                  기능
                 </a>
               </li>
               <li>
@@ -60,7 +60,7 @@ const Footer = () => {
                   href="/how-it-works"
                   className="text-gray-300 hover:text-white transition-colors text-sm"
                 >
-                  How It Works
+                  사용 방법
                 </a>
               </li>
               <li>
@@ -68,7 +68,7 @@ const Footer = () => {
                   href="/pricing"
                   className="text-gray-300 hover:text-white transition-colors text-sm"
                 >
-                  Pricing
+                  요금제
                 </a>
               </li>
               <li>
@@ -76,7 +76,7 @@ const Footer = () => {
                   href="/api"
                   className="text-gray-300 hover:text-white transition-colors text-sm"
                 >
-                  API Documentation
+                  API 문서
                 </a>
               </li>
               <li>
@@ -84,22 +84,22 @@ const Footer = () => {
                   href="/security"
                   className="text-gray-300 hover:text-white transition-colors text-sm"
                 >
-                  Security
+                  보안
                 </a>
               </li>
             </ul>
           </div>
 
-          {/* Company */}
+          {/* 회사 */}
           <div>
-            <h6 className="text-lg font-semibold mb-4">Company</h6>
+            <h6 className="text-lg font-semibold mb-4">회사</h6>
             <ul className="space-y-3">
               <li>
                 <a
                   href="/about"
                   className="text-gray-300 hover:text-white transition-colors text-sm"
                 >
-                  About Us
+                  회사 소개
                 </a>
               </li>
               <li>
@@ -107,7 +107,7 @@ const Footer = () => {
                   href="/careers"
                   className="text-gray-300 hover:text-white transition-colors text-sm"
                 >
-                  Careers
+                  채용
                 </a>
               </li>
               <li>
@@ -115,7 +115,7 @@ const Footer = () => {
                   href="/press"
                   className="text-gray-300 hover:text-white transition-colors text-sm"
                 >
-                  Press Kit
+                  보도자료
                 </a>
               </li>
               <li>
@@ -123,7 +123,7 @@ const Footer = () => {
                   href="/community"
                   className="text-gray-300 hover:text-white transition-colors text-sm"
                 >
-                  Community
+                  커뮤니티
                 </a>
               </li>
               <li>
@@ -131,22 +131,22 @@ const Footer = () => {
                   href="/blog"
                   className="text-gray-300 hover:text-white transition-colors text-sm"
                 >
-                  Blog
+                  블로그
                 </a>
               </li>
             </ul>
           </div>
 
-          {/* Support */}
+          {/* 지원 */}
           <div>
-            <h6 className="text-lg font-semibold mb-4">Support</h6>
+            <h6 className="text-lg font-semibold mb-4">지원</h6>
             <ul className="space-y-3">
               <li>
                 <a
                   href="/help"
                   className="text-gray-300 hover:text-white transition-colors text-sm"
                 >
-                  Help Center
+                  고객지원센터
                 </a>
               </li>
               <li>
@@ -154,7 +154,7 @@ const Footer = () => {
                   href="/contact"
                   className="text-gray-300 hover:text-white transition-colors text-sm"
                 >
-                  Contact Support
+                  고객 지원 문의
                 </a>
               </li>
               <li>
@@ -162,7 +162,7 @@ const Footer = () => {
                   href="/privacy"
                   className="text-gray-300 hover:text-white transition-colors text-sm"
                 >
-                  Privacy Policy
+                  개인정보처리방침
                 </a>
               </li>
               <li>
@@ -170,7 +170,7 @@ const Footer = () => {
                   href="/terms"
                   className="text-gray-300 hover:text-white transition-colors text-sm"
                 >
-                  Terms of Service
+                  서비스 이용약관
                 </a>
               </li>
               <li>
@@ -178,7 +178,7 @@ const Footer = () => {
                   href="/cookies"
                   className="text-gray-300 hover:text-white transition-colors text-sm"
                 >
-                  Cookie Policy
+                  쿠키 정책
                 </a>
               </li>
             </ul>
@@ -204,35 +204,10 @@ const Footer = () => {
           </div>
         </div>
 
-        {/* 앱 다운로드 */}
-        <div className="mb-8">
-          <h6 className="text-lg font-semibold mb-4">Download the App</h6>
-          <p className="text-gray-400 mb-4 text-sm">
-            Available for iOS and Android
-          </p>
-          <div className="flex space-x-4">
-            <button className="flex items-center space-x-2 px-4 py-2 bg-gray-700 hover:bg-gray-600 rounded-lg transition-colors">
-              <Smartphone className="h-4 w-4" />
-              <div className="text-left">
-                <div className="text-xs text-gray-400">Download for</div>
-                <div className="text-sm font-semibold">iOS</div>
-              </div>
-            </button>
-            <button className="flex items-center space-x-2 px-4 py-2 bg-gray-700 hover:bg-gray-600 rounded-lg transition-colors">
-              <Smartphone className="h-4 w-4" />
-              <div className="text-left">
-                <div className="text-xs text-gray-400">Download for</div>
-                <div className="text-sm font-semibold">Android</div>
-              </div>
-            </button>
-          </div>
-        </div>
-
         {/* 하단 카피라이트 */}
         <div className="text-center">
           <p className="text-gray-400 text-sm">
-            © 2025 FinFit. All rights reserved. | Made with ❤️ for young
-            professionals in Korea
+            © 2025 FinFit. © ALL RIGHTS RESERVED | 한국의 청년을 위해 ❤️
           </p>
         </div>
       </div>

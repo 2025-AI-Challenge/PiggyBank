@@ -21,8 +21,6 @@ defmodule PiggybankWeb.Router do
     get "/", PageController, :home
     get "/features", PageController, :features
     get "/how-it-works", PageController, :how_it_works
-    get "/community", PageController, :community
-    get "/events", PageController, :events
 
     get "/analyze", PageController, :analyze
     get "/analyze/step/:step", PageController, :analyze

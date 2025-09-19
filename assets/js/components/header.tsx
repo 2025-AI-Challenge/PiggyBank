@@ -52,25 +52,13 @@ const Header = () => {
               href="/features"
               className="text-gray-600 hover:text-blue-600 transition-colors font-medium"
             >
-              Features
+              기능
             </Link>
             <Link
               href="/how-it-works"
               className="text-gray-600 hover:text-blue-600 transition-colors font-medium"
             >
-              How It Works
-            </Link>
-            <Link
-              href="/community"
-              className="text-gray-600 hover:text-blue-600 transition-colors font-medium"
-            >
-              Community
-            </Link>
-            <Link
-              href="/events"
-              className="text-gray-600 hover:text-blue-600 transition-colors font-medium"
-            >
-              Events
+              사용 방법
             </Link>
           </nav>
 
@@ -79,7 +67,7 @@ const Header = () => {
               href="/analyze"
               className="px-6 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition-colors font-medium"
             >
-              Get Started Free
+              무료 시작하기
             </Link>
           </div>
         </div>

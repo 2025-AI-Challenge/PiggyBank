@@ -17,11 +17,11 @@ const HowItWorksPage = () => {
       <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
         <div className="text-center mb-16">
           <h1 className="text-5xl font-bold text-gray-900 mb-6">
-            How <span className="text-blue-600">FinFit</span> Works
+            <span className="text-blue-600">FinFit</span> 사용법
           </h1>
           <p className="text-xl text-gray-600 max-w-3xl mx-auto">
-            Getting started with your financial fitness journey is simple.
-            Follow these four easy steps to transform your money habits.
+            금융 피트니스 여정을 시작하는 것은 간단합니다.
+            이 네 가지 쉽은 단계를 따라 돈 관리 습관을 변화시켜보세요.
           </p>
         </div>
 
@@ -31,31 +31,31 @@ const HowItWorksPage = () => {
           <div className="bg-white rounded-2xl p-8 shadow-lg border border-gray-200 relative">
             <div className="absolute top-4 right-4">
               <span className="bg-blue-100 text-blue-600 text-sm font-semibold px-3 py-1 rounded-full">
-                Step 1
+                1단계
               </span>
             </div>
             <div className="w-16 h-16 bg-blue-100 rounded-full flex items-center justify-center mb-6">
               <Upload className="w-8 h-8 text-blue-600" />
             </div>
             <h3 className="text-xl font-bold text-gray-900 mb-4">
-              Input Financial Data
+              금융 데이터 입력
             </h3>
             <p className="text-gray-600 mb-6">
-              Connect your accounts or manually input your spending, income, and
-              investment information securely.
+              계정을 연결하거나 지출, 수입, 투자 정보를
+              수동으로 안전하게 입력하세요.
             </p>
             <ul className="space-y-2 text-sm text-gray-600">
               <li className="flex items-center">
                 <CheckCircle className="w-4 h-4 text-green-500 mr-2" />
-                Bank account linking
+                은행 계정 연결
               </li>
               <li className="flex items-center">
                 <CheckCircle className="w-4 h-4 text-green-500 mr-2" />
-                Manual data entry
+                수동 데이터 입력
               </li>
               <li className="flex items-center">
                 <CheckCircle className="w-4 h-4 text-green-500 mr-2" />
-                Secure encryption
+                안전한 암호화
               </li>
             </ul>
           </div>
@@ -64,31 +64,31 @@ const HowItWorksPage = () => {
           <div className="bg-white rounded-2xl p-8 shadow-lg border border-gray-200 relative">
             <div className="absolute top-4 right-4">
               <span className="bg-green-100 text-green-600 text-sm font-semibold px-3 py-1 rounded-full">
-                Step 2
+                2단계
               </span>
             </div>
             <div className="w-16 h-16 bg-green-100 rounded-full flex items-center justify-center mb-6">
               <BarChart3 className="w-8 h-8 text-green-600" />
             </div>
             <h3 className="text-xl font-bold text-gray-900 mb-4">
-              Get Your Finance Health Score
+              금융 건강 점수 받기
             </h3>
             <p className="text-gray-600 mb-6">
-              Receive your comprehensive financial health report with scores for
-              spending, income, and investment performance.
+              지출, 수입, 투자 성과에 대한 점수를 포함한
+              종합적인 금융 건강 리포트를 받아보세요.
             </p>
             <ul className="space-y-2 text-sm text-gray-600">
               <li className="flex items-center">
                 <CheckCircle className="w-4 h-4 text-green-500 mr-2" />
-                Spending analysis
+                지출 분석
               </li>
               <li className="flex items-center">
                 <CheckCircle className="w-4 h-4 text-green-500 mr-2" />
-                Income tracking
+                수입 추적
               </li>
               <li className="flex items-center">
                 <CheckCircle className="w-4 h-4 text-green-500 mr-2" />
-                Investment insights
+                투자 인사이트
               </li>
             </ul>
           </div>
@@ -97,31 +97,31 @@ const HowItWorksPage = () => {
           <div className="bg-white rounded-2xl p-8 shadow-lg border border-gray-200 relative">
             <div className="absolute top-4 right-4">
               <span className="bg-purple-100 text-purple-600 text-sm font-semibold px-3 py-1 rounded-full">
-                Step 3
+                3단계
               </span>
             </div>
             <div className="w-16 h-16 bg-purple-100 rounded-full flex items-center justify-center mb-6">
               <Target className="w-8 h-8 text-purple-600" />
             </div>
             <h3 className="text-xl font-bold text-gray-900 mb-4">
-              Receive Personalized Plan
+              개인화된 계획 받기
             </h3>
             <p className="text-gray-600 mb-6">
-              Get customized goals, daily checklists, and actionable
-              recommendations based on your financial health score.
+              금융 건강 점수를 바탕으로 맞춤형 목표, 일일 체크리스트,
+              그리고 실행 가능한 추천사항을 받아보세요.
             </p>
             <ul className="space-y-2 text-sm text-gray-600">
               <li className="flex items-center">
                 <CheckCircle className="w-4 h-4 text-green-500 mr-2" />
-                Custom goal setting
+                맞춤형 목표 설정
               </li>
               <li className="flex items-center">
                 <CheckCircle className="w-4 h-4 text-green-500 mr-2" />
-                Daily tasks
+                일일 과제
               </li>
               <li className="flex items-center">
                 <CheckCircle className="w-4 h-4 text-green-500 mr-2" />
-                Smart recommendations
+                스마트 추천사항
               </li>
             </ul>
           </div>
@@ -130,31 +130,31 @@ const HowItWorksPage = () => {
           <div className="bg-white rounded-2xl p-8 shadow-lg border border-gray-200 relative">
             <div className="absolute top-4 right-4">
               <span className="bg-orange-100 text-orange-600 text-sm font-semibold px-3 py-1 rounded-full">
-                Step 4
+                4단계
               </span>
             </div>
             <div className="w-16 h-16 bg-orange-100 rounded-full flex items-center justify-center mb-6">
               <Award className="w-8 h-8 text-orange-600" />
             </div>
             <h3 className="text-xl font-bold text-gray-900 mb-4">
-              Earn Rewards & Improve
+              리워드 획등 & 개선
             </h3>
             <p className="text-gray-600 mb-6">
-              Complete challenges, level up your financial habits, and watch
-              your Finance Health score improve over time.
+              챌린지를 완료하고, 금융 습관을 레벨업하며,
+              시간이 지남에 따라 금융 건강 점수가 개선되는 모습을 지켜보세요.
             </p>
             <ul className="space-y-2 text-sm text-gray-600">
               <li className="flex items-center">
                 <CheckCircle className="w-4 h-4 text-green-500 mr-2" />
-                Daily challenges
+                일일 챌린지
               </li>
               <li className="flex items-center">
                 <CheckCircle className="w-4 h-4 text-green-500 mr-2" />
-                Reward system
+                리워드 시스템
               </li>
               <li className="flex items-center">
                 <CheckCircle className="w-4 h-4 text-green-500 mr-2" />
-                Progress tracking
+                진척 추적
               </li>
             </ul>
           </div>
@@ -163,7 +163,7 @@ const HowItWorksPage = () => {
         {/* Process Flow */}
         <div className="bg-white rounded-2xl shadow-xl p-8 mb-16">
           <h2 className="text-3xl font-bold text-gray-900 text-center mb-12">
-            Your Financial Fitness Journey
+            나의 금융 피트니스 여정
           </h2>
           <div className="flex flex-col lg:flex-row items-center justify-between space-y-8 lg:space-y-0 lg:space-x-8">
             <div className="flex-1 text-center">
@@ -171,10 +171,10 @@ const HowItWorksPage = () => {
                 <Upload className="w-10 h-10 text-blue-600" />
               </div>
               <h3 className="font-semibold text-gray-900 mb-2">
-                Connect & Analyze
+                연결 & 분석
               </h3>
               <p className="text-gray-600 text-sm">
-                Input your financial data securely
+                금융 데이터를 안전하게 입력
               </p>
             </div>
 
@@ -185,10 +185,10 @@ const HowItWorksPage = () => {
                 <BarChart3 className="w-10 h-10 text-green-600" />
               </div>
               <h3 className="font-semibold text-gray-900 mb-2">
-                Get Your Score
+                점수 받기
               </h3>
               <p className="text-gray-600 text-sm">
-                Receive personalized health report
+                개인화된 건강 리포트 받기
               </p>
             </div>
 
@@ -199,10 +199,10 @@ const HowItWorksPage = () => {
                 <Target className="w-10 h-10 text-purple-600" />
               </div>
               <h3 className="font-semibold text-gray-900 mb-2">
-                Follow Your Plan
+                계획 따라하기
               </h3>
               <p className="text-gray-600 text-sm">
-                Complete daily tasks & challenges
+                일일 과제와 챌린지 완수
               </p>
             </div>
 
@@ -212,9 +212,9 @@ const HowItWorksPage = () => {
               <div className="w-20 h-20 bg-orange-100 rounded-full flex items-center justify-center mx-auto mb-4">
                 <TrendingUp className="w-10 h-10 text-orange-600" />
               </div>
-              <h3 className="font-semibold text-gray-900 mb-2">See Results</h3>
+              <h3 className="font-semibold text-gray-900 mb-2">결과 확인</h3>
               <p className="text-gray-600 text-sm">
-                Watch your score improve over time
+                시간이 지남에 따라 점수 개선 확인
               </p>
             </div>
           </div>
@@ -224,25 +224,25 @@ const HowItWorksPage = () => {
         <div className="bg-gradient-to-r from-blue-600 to-purple-600 rounded-2xl p-8 text-white mb-16">
           <div className="text-center mb-8">
             <h2 className="text-3xl font-bold mb-4">
-              Join Our Success Stories
+              성공 사례에 동참하세요
             </h2>
             <p className="text-xl opacity-90">
-              See how FinFit has transformed financial habits for thousands of
-              users
+              FinFit이 수천 명의 사용자들의 금융 습관을
+              어떻게 변화시켰는지 확인해보세요
             </p>
           </div>
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
             <div className="text-center">
               <div className="text-4xl font-bold mb-2">87%</div>
-              <p className="opacity-90">Users improved their savings rate</p>
+              <p className="opacity-90">사용자들이 저축률을 개선</p>
             </div>
             <div className="text-center">
               <div className="text-4xl font-bold mb-2">₩2.3M</div>
-              <p className="opacity-90">Average amount saved in 6 months</p>
+              <p className="opacity-90">6개월 평균 절약 금액</p>
             </div>
             <div className="text-center">
               <div className="text-4xl font-bold mb-2">92%</div>
-              <p className="opacity-90">Users stick to their financial goals</p>
+              <p className="opacity-90">사용자들이 금융 목표를 지속적으로 실행</p>
             </div>
           </div>
         </div>
@@ -250,17 +250,17 @@ const HowItWorksPage = () => {
         {/* CTA Section */}
         <div className="bg-white rounded-2xl shadow-xl p-8 text-center">
           <h2 className="text-3xl font-bold text-gray-900 mb-4">
-            Ready to Start Your Financial Fitness Journey?
+            금융 피트니스 여정을 시작할 준비가 되셨나요?
           </h2>
           <p className="text-xl text-gray-600 mb-8">
-            Join thousands of young professionals who are already improving
-            their financial health with FinFit.
+            FinFit으로 이미 금융 건강을 개선하고 있는
+            수천 명의 청년 전문직들과 함께하세요.
           </p>
           <Link
             href="/analyze"
             className="inline-block px-8 py-4 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition-colors font-semibold text-lg"
           >
-            Get Your Finance Health Score
+            내 금융 건강 점수 확인하기
           </Link>
         </div>
       </section>

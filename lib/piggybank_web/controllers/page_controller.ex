@@ -21,18 +21,6 @@ defmodule PiggybankWeb.PageController do
     |> render_inertia("HowItWorksPage")
   end
 
-  def community(conn, _params) do
-    conn
-    |> assign(:page_title, "커뮤니티")
-    |> render_inertia("CommunityPage")
-  end
-
-  def events(conn, _params) do
-    conn
-    |> assign(:page_title, "이벤트")
-    |> render_inertia("EventsPage")
-  end
-
   def submit_step1(conn, %{"personal_info" => personal_info}) do
     normalized_personal_info = normalize_personal_info(personal_info)
 

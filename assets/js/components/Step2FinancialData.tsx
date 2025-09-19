@@ -37,8 +37,8 @@ const Step2FinancialData: React.FC<Step2FinancialDataProps> = ({
   onFinancialUpdate,
   onSubmit,
 }) => {
-  const categoryOptions = ["Essential", "Non-essential"];
-  const frequencyOptions = ["Recurring", "One-time"];
+  const categoryOptions = ["필수", "선택적"];
+  const frequencyOptions = ["정기적", "일회성"];
 
   const isFormValid = () => {
     const allItems = [
@@ -95,23 +95,23 @@ const Step2FinancialData: React.FC<Step2FinancialDataProps> = ({
         {/* Header */}
         <div className="text-center mb-8">
           <h1 className="text-3xl font-bold text-gray-900 mb-2">
-            Your Financial Profile
+            나의 금융 프로필
           </h1>
           <p className="text-gray-600">
-            Review and categorize your financial information for accurate analysis
+            정확한 분석을 위해 금융 정보를 검토하고 분류하세요
           </p>
         </div>
 
         {/* Profile Summary */}
         <div className="bg-white rounded-xl shadow-lg p-6 mb-6">
-          <h2 className="text-lg font-semibold text-gray-900 mb-4">Profile Summary</h2>
+          <h2 className="text-lg font-semibold text-gray-900 mb-4">프로필 요약</h2>
           <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
             <div className="flex items-center space-x-3">
               <div className="w-10 h-10 bg-blue-100 rounded-lg flex items-center justify-center">
                 <User className="w-5 h-5 text-blue-600" />
               </div>
               <div>
-                <p className="text-xs text-gray-500">Name</p>
+                <p className="text-xs text-gray-500">이름</p>
                 <p className="text-sm font-medium text-gray-900">{formData.fullName || "○○○"}</p>
               </div>
             </div>
@@ -120,8 +120,8 @@ const Step2FinancialData: React.FC<Step2FinancialDataProps> = ({
                 <Calendar className="w-5 h-5 text-green-600" />
               </div>
               <div>
-                <p className="text-xs text-gray-500">Age</p>
-                <p className="text-sm font-medium text-gray-900">{formData.age || "20"} years</p>
+                <p className="text-xs text-gray-500">나이</p>
+                <p className="text-sm font-medium text-gray-900">{formData.age || "20"}세</p>
               </div>
             </div>
             <div className="flex items-center space-x-3">
@@ -129,8 +129,8 @@ const Step2FinancialData: React.FC<Step2FinancialDataProps> = ({
                 <Users className="w-5 h-5 text-pink-600" />
               </div>
               <div>
-                <p className="text-xs text-gray-500">Gender</p>
-                <p className="text-sm font-medium text-gray-900">{formData.gender || "Male"}</p>
+                <p className="text-xs text-gray-500">성별</p>
+                <p className="text-sm font-medium text-gray-900">{formData.gender === 'male' ? '남성' : formData.gender === 'female' ? '여성' : formData.gender === 'other' ? '기타' : '남성'}</p>
               </div>
             </div>
             <div className="flex items-center space-x-3">
@@ -138,7 +138,7 @@ const Step2FinancialData: React.FC<Step2FinancialDataProps> = ({
                 <Building className="w-5 h-5 text-orange-600" />
               </div>
               <div>
-                <p className="text-xs text-gray-500">Company</p>
+                <p className="text-xs text-gray-500">회사</p>
                 <p className="text-sm font-medium text-gray-900">{formData.companyName || "애널라이즈"}</p>
               </div>
             </div>
@@ -150,7 +150,7 @@ const Step2FinancialData: React.FC<Step2FinancialDataProps> = ({
           <div className="bg-white rounded-xl shadow-lg p-6">
             <div className="flex items-center space-x-3 mb-4">
               <DollarSign className="w-6 h-6 text-green-600" />
-              <h3 className="text-lg font-semibold text-gray-900">Income</h3>
+              <h3 className="text-lg font-semibold text-gray-900">수입</h3>
             </div>
             <div className="space-y-4">
               {financialData.income.map((item, index) => (
@@ -163,7 +163,7 @@ const Step2FinancialData: React.FC<Step2FinancialDataProps> = ({
                   <p className="text-lg font-semibold text-green-700 mb-3">{item.amount}</p>
                   <div className="grid grid-cols-2 gap-4">
                     <div>
-                      <p className="text-xs text-gray-500 mb-1">Category</p>
+                      <p className="text-xs text-gray-500 mb-1">카테고리</p>
                       <div className="relative">
                         <select
                           value={item.category}
@@ -191,7 +191,7 @@ const Step2FinancialData: React.FC<Step2FinancialDataProps> = ({
                       </div>
                     </div>
                     <div>
-                      <p className="text-xs text-gray-500 mb-1">Frequency</p>
+                      <p className="text-xs text-gray-500 mb-1">빈도</p>
                       <div className="relative">
                         <select
                           value={item.frequency}
@@ -229,7 +229,7 @@ const Step2FinancialData: React.FC<Step2FinancialDataProps> = ({
           <div className="bg-white rounded-xl shadow-lg p-6">
             <div className="flex items-center space-x-3 mb-4">
               <CreditCard className="w-6 h-6 text-blue-600" />
-              <h3 className="text-lg font-semibold text-gray-900">Spending</h3>
+              <h3 className="text-lg font-semibold text-gray-900">지출</h3>
             </div>
             <div className="space-y-4">
               {financialData.spending.map((item, index) => (
@@ -242,7 +242,7 @@ const Step2FinancialData: React.FC<Step2FinancialDataProps> = ({
                   <p className="text-lg font-semibold text-blue-700 mb-3">{item.amount}</p>
                   <div className="grid grid-cols-2 gap-4">
                     <div>
-                      <p className="text-xs text-gray-500 mb-1">Category</p>
+                      <p className="text-xs text-gray-500 mb-1">카테고리</p>
                       <div className="relative">
                         <select
                           value={item.category}
@@ -270,7 +270,7 @@ const Step2FinancialData: React.FC<Step2FinancialDataProps> = ({
                       </div>
                     </div>
                     <div>
-                      <p className="text-xs text-gray-500 mb-1">Frequency</p>
+                      <p className="text-xs text-gray-500 mb-1">빈도</p>
                       <div className="relative">
                         <select
                           value={item.frequency}
@@ -308,7 +308,7 @@ const Step2FinancialData: React.FC<Step2FinancialDataProps> = ({
           <div className="bg-white rounded-xl shadow-lg p-6">
             <div className="flex items-center space-x-3 mb-4">
               <TrendingUp className="w-6 h-6 text-purple-600" />
-              <h3 className="text-lg font-semibold text-gray-900">Investment</h3>
+              <h3 className="text-lg font-semibold text-gray-900">투자</h3>
             </div>
             <div className="space-y-4">
               {financialData.investment.map((item, index) => (
@@ -326,7 +326,7 @@ const Step2FinancialData: React.FC<Step2FinancialDataProps> = ({
                   <p className="text-lg font-semibold text-purple-700 mb-3">{item.amount}</p>
                   <div className="grid grid-cols-2 gap-4">
                     <div>
-                      <p className="text-xs text-gray-500 mb-1">Category</p>
+                      <p className="text-xs text-gray-500 mb-1">카테고리</p>
                       <div className="relative">
                         <select
                           value={item.category}
@@ -354,7 +354,7 @@ const Step2FinancialData: React.FC<Step2FinancialDataProps> = ({
                       </div>
                     </div>
                     <div>
-                      <p className="text-xs text-gray-500 mb-1">Frequency</p>
+                      <p className="text-xs text-gray-500 mb-1">빈도</p>
                       <div className="relative">
                         <select
                           value={item.frequency}
@@ -395,9 +395,9 @@ const Step2FinancialData: React.FC<Step2FinancialDataProps> = ({
             <div className="w-12 h-12 bg-white bg-opacity-20 rounded-lg flex items-center justify-center mx-auto mb-3">
               <TrendingUp className="w-6 h-6 text-white" />
             </div>
-            <h3 className="text-xl font-semibold mb-2">Ready for Your Analysis?</h3>
+            <h3 className="text-xl font-semibold mb-2">분석을 시작할 준비가 되셨나요?</h3>
             <p className="text-blue-100 text-sm">
-              We'll use your categorization to provide personalized financial insights and recommendations.
+              귀하의 분류를 바탕으로 개인화된 금융 인사이트와 추천사항을 제공할 거예요.
             </p>
           </div>
           <button
@@ -409,9 +409,9 @@ const Step2FinancialData: React.FC<Step2FinancialDataProps> = ({
                 : "bg-gray-300 text-gray-500 cursor-not-allowed"
             }`}
           >
-            Submit Analysis →
+            분석 제출 →
           </button>
-          <p className="text-xs text-blue-100 mt-3">Please complete all category selections to continue</p>
+          <p className="text-xs text-blue-100 mt-3">계속하려면 모든 카테고리 선택을 완료해 주세요</p>
         </div>
 
         {/* Progress Indicator */}
@@ -429,7 +429,7 @@ const Step2FinancialData: React.FC<Step2FinancialDataProps> = ({
               3
             </div>
           </div>
-          <p className="text-sm text-gray-600">Step 2 of 3: Financial Categorization</p>
+          <p className="text-sm text-gray-600">2단계 / 총 3단계: 금융 분류</p>
         </div>
       </div>
     </div>
